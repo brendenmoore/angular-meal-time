@@ -1,1 +1,17 @@
-<p>recipie-list works!</p>
+<div class="list">
+  <h1>Recipes</h1>
+  <ul>
+    <li *ngFor="let recipe of recipes" (click)="onSelect(recipe)">
+      {{recipe.name}}
+    </li>
+  </ul>
+
+</div>
+
+<div *ngIf="selectedRecipe" class="details">
+  <h1>{{selectedRecipe.name}} Details</h1>
+  <p>id: {{selectedRecipe.id}}</p>
+  <label>name:
+    <input type="text" [(ngModel)]="selectedRecipe.name" placeholder="name">
+  </label>
+</div>

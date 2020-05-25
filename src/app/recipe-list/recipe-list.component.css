@@ -1,0 +1,17 @@
+li {
+  padding: 10px;
+  background-color: #789;
+  color: white;
+  margin-bottom: 5px;
+  width: 200px;
+  list-style-type: none;
+}
+
+.list {
+  padding: 20px
+}
+
+.details {
+  padding: 20px;
+  background-color: aliceblue;
+}
