@@ -1,1 +1,15 @@
-<app-recipe-list></app-recipe-list>
+<ng-template #login>
+    <button (click)="user.login()">Login</button>
+</ng-template>
+
+
+<div *ngIf="user.uid | async as uid; else login">
+    <p>User: {{uid}}</p>
+    <button (click)="user.logout()">Logout</button>
+    <p>It works!</p>
+    <button (click)='data.createUser(userId)'>test</button>
+    <app-recipe-list></app-recipe-list>
+</div>
+
+
+
