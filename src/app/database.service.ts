@@ -1,8 +1,9 @@
 import { Injectable, OnInit } from '@angular/core';
-import { AngularFireDatabase, AngularFireList } from "angularfire2/database"; 
+import { AngularFireDatabase, AngularFireList, AngularFireObject } from "angularfire2/database"; 
 import { AngularFireAuth } from 'angularfire2/auth';
 import { UserService } from './user.service';
 import { User, Recipe} from './interfaces'
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -44,7 +45,7 @@ export class DatabaseService implements OnInit{
     return this.recipes;
   }
 
-  getRecipe(recipeName: string) {
+  getRecipe(recipeName: string): AngularFireObject<Recipe> {
     return this.db.object(`recipes/${this.userId}/${recipeName}`);
   }
 

@@ -18,7 +18,6 @@ export class RecipeListComponent implements OnInit {
 
   constructor(private dbService: DatabaseService) {
     this.recipeList = this.dbService.getRecipeList().valueChanges();
-    this.dbService.getRecipeList().valueChanges()
   }
 
   ngOnInit() { }
@@ -27,23 +26,18 @@ export class RecipeListComponent implements OnInit {
     this.selectedRecipe = recipe;
   }
 
-  newRecipe(name: string) {
+  newRecipe() {
     let recipe: Recipe = {
-      name: name
+      name: "New Recipe",
+      prepTime: "",
+      cookTime: "",
+      servings: "",
+      directions: "",
+      notes: ""
+
     }
     this.dbService.addRecipe(recipe);
+    this.onSelect(recipe);
   }
-
-  // getRecipes() {
-  //   // console.log(this.dbService.getRecipeList());
-  //   // this.dbService.getRecipeList().snapshotChanges().pipe(map(changes =>
-  //   //   changes.map(c => 
-  //   //     ({key: c.payload.key, ...c.payload.val()})
-  //   //     ))).subscribe(items => {
-  //   //       return items;
-  //   //     })
-  // }
-
-  
 
 }

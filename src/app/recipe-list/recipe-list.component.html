@@ -1,12 +1,8 @@
-<div>
-<input #recipeName type="text" placeholder="Recipe Name" (keyup.enter)="newRecipe(recipeName.value); recipeName.value = ''">
-</div>
-
 <div class="list">
-  <h1>Recipes</h1>
+  <h1>Recipes</h1> <button id="addBtn" (click)="newRecipe()">+</button>
   <ul>
     <li *ngFor="let recipe of recipeList | async" (click)="onSelect(recipe)">
-      {{recipe.name }}
+      {{ recipe.name }}
     </li>
   </ul>
 </div>

@@ -1,7 +1,47 @@
-<div *ngIf="recipe" class="details">
+<div *ngIf="(recipeObs | async) as recipe" class="details">
+  
   <h1>{{recipe.name}} Details</h1>
-  <p>id: {{recipe.id}}</p>
-  <label>name:
-    <input type="text" [(ngModel)]="recipe.name" placeholder="name">
-  </label>
+
+  <div *ngIf="!isEdit; else edit">
+    <p *ngIf="recipe.name">Name: {{recipe.name}}</p>
+    <p *ngIf="recipe.prepTime">Prep Time: {{recipe.prepTime}}</p>
+    <p *ngIf="recipe.cookTime">Cook Time: {{recipe.cookTime}}</p>
+    <p *ngIf="recipe.servings">Servings: {{recipe.servings}}</p>
+    <p *ngIf="recipe.directions">Directions: {{recipe.directions}}</p>
+    <p *ngIf="recipe.notes">Notes: {{recipe.notes}}</p>
+    <div *ngIf="recipe.ingredients"><p>Ingredients: </p>
+      <ol>
+        <li *ngFor="let ingredient of recipe.ingredients; let i=index">&emsp;{{i+1}}. {{ingredient}}</li>
+      </ol>
+    </div>
+    <button *ngIf="!isEdit" (click)="isEdit = true" type="button">Edit</button>
+  </div>
+
+  <ng-template #edit>
+    <form #editRecipeForm="ngForm" (ngSubmit)="processForm(editRecipeForm)" novalidate>
+      <p>name: <input name="name" ngModel type="text" [(ngModel)]="recipe.name"></p>
+      <p>prep time: <input name="prepTime" ngModel type="text" [(ngModel)]="recipe.prepTime"></p>
+      <p>cook time: <input name="cookTime" ngModel type="text" [(ngModel)]="recipe.cookTime"></p>
+      <p>servings: <input name="servings" ngModel type="text" [(ngModel)]="recipe.servings"></p>
+      <p>directions: <input name="directions" ngModel type="text" [(ngModel)]="recipe.directions"></p>
+      <p>notes: <input name="notes" ngModel type="text" [(ngModel)]="recipe.notes"></p>
+      <div><p>ingredients: </p>
+        <ol *ngIf="ingredientList">
+          <li *ngFor="let ingredient of ingredientList; let i=index; trackBy:trackByFn">
+            <input type="text" name="{{ingredientList.indexOf(ingredient)}}" [(ngModel)]="ingredientList[i]">
+            <button (click)="removeIngredient(ingredientList.indexOf(ingredient))" type="button">X</button>
+          </li>
+        </ol>
+        <button (click)="addIngredientInput()" type="button">Add Ingredient</button>
+      </div>
+      <button *ngIf="isEdit" type="submit">Save</button>
+      <button (click)="deleteRecipe()">Delete Recipe</button>
+    </form>
+  </ng-template>
+    
 </div>
+
+
+
+
+
