@@ -1,0 +1,16 @@
+<div id="wrapper">
+    <h1>Menu</h1>
+    <div id="menuGrid">
+        <div class="item" *ngFor="let day of dayStringArr">
+            <h2>{{day}}</h2>
+        </div>
+        <div *ngFor="let day of dayStringArr" class="item">
+            <app-day-menu [menu]="observableArr[dayStringArr.indexOf(day)]"></app-day-menu>
+            <button (click)="addingToMenu(timestampArr[dayStringArr.indexOf(day)])">Add</button>
+        </div>
+    </div>  
+    <app-recipe-list (addedMenuItem)="finishedAdding($event)" [inputSelectedDate]="selectedDay" *ngIf="isAdding"></app-recipe-list>
+</div>
+
+
+    

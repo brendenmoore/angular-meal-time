@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from "@angular/core";
+import { Component, Input, OnChanges } from "@angular/core";
 import { Recipe } from "../interfaces";
 import { DatabaseService } from '../database.service'
 import { Observable } from 'rxjs';
@@ -10,57 +10,55 @@ import { NgForm } from '@angular/forms';
   styleUrls: ["./recipe-detail.component.css"],
 })
 export class RecipeDetailComponent implements OnChanges {
+  
   @Input() recipe: Recipe;
 
   recipeObs: Observable<Recipe>;
-  isEdit = false;
+  isEdit: boolean = false;
   ingredientList: Array<string> = [];
 
-  constructor(private dbService: DatabaseService) {
-    
-  }
+  constructor(private dbService: DatabaseService) {}
 
   ngOnChanges() {
-    if(this.recipe.ingredients) {
-      this.ingredientList = this.recipe.ingredients;
-    }
-    this.recipeObs = this.dbService.getRecipe(this.recipe.name).valueChanges();
+    this.updateVariables();
   }
 
   addIngredientInput() {
     this.ingredientList.push("");
   }
 
-  removeIngredient(index: number) {
+  removeIngredient(index: number): void {
     this.ingredientList.splice(0, 1)
   }
 
-  trackByFn(index: any, item: any) {
-    return index;
- }
-
-  processForm(form: NgForm) {
-    console.log(this.recipe);
-    let myJson = form.value;
-    let newRecipe: Recipe = {
-      name: myJson.name,
-      prepTime: myJson.prepTime,
-      cookTime: myJson.cookTime,
-      servings: myJson.servings,
-      directions: myJson.directions,
-      notes: myJson.notes
-    };
-    this.dbService.getRecipeList().remove(this.recipe.name);
-    console.log(newRecipe);
+  processForm(form: NgForm): void {
+    let j = form.value;
+    let newRecipe = new Recipe(j.name, j.prepTime, j.cookTime, j.servings, j.directions, j.notes)
+    this.dbService.deleteRecipe(this.recipe);
     this.recipe = newRecipe;
-    this.dbService.getRecipeList().update(this.recipe.name, newRecipe);
-    this.dbService.getRecipe(this.recipe.name).update({ingredients: this.ingredientList});
+    this.dbService.addRecipe(newRecipe);
+    this.dbService.setRecipeIngredients(this.recipe, this.ingredientList);
     this.isEdit = false
   }
 
   deleteRecipe() {
-    this.dbService.getRecipeList().remove(this.recipe.name);
+    this.dbService.deleteRecipe(this.recipe);
     this.isEdit = false
+  }
+
+  trackByFn(index: any, item: any): number {
+    return index;
+  }
+
+  updateVariables() {
+    if(this.recipe) {
+      if(this.recipe.ingredients) {
+        this.ingredientList = this.recipe.ingredients;
+      } else {
+        this.ingredientList = [];
+      }
+      this.recipeObs = this.dbService.getRecipe(this.recipe).valueChanges();
+    }
   }
 
 }

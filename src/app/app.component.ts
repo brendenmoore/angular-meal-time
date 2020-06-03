@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from './user.service';
-import { DatabaseService } from './database.service';
+import { Page } from './enums';
 
 @Component({
   selector: 'app-root',
@@ -8,19 +8,11 @@ import { DatabaseService } from './database.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'meal-time';
-  userId = null;
 
-  constructor(public user: UserService, public data: DatabaseService) {}
+  Page = Page;
+  page: Page = Page.RecipeList;
 
-  ngOnInit() {
-    this.user.uid.subscribe(uid => {
-      this.userId = uid;
-    });
-  }
+  constructor(public user: UserService) {}
 
-  test(){
-    console.log(this.userId);
-  }
-
+  ngOnInit() {}
 }

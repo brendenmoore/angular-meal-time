@@ -6,7 +6,14 @@
 <div *ngIf="user.uid | async as uid; else login">
     <p>User: {{uid}}</p>
     <button (click)="user.logout()">Logout</button>
-    <app-recipe-list></app-recipe-list>
+    
+    <button (click)="page=Page.RecipeList">Recipe List</button>
+    <button (click)="page=Page.Menu">Menu</button>
+    <button (click)="page=Page.ShoppingList">Shopping List</button>
+
+    <app-recipe-list *ngIf="page===Page.RecipeList"></app-recipe-list>
+    <app-menu *ngIf="page===Page.Menu"></app-menu>
+    <app-shopping-list *ngIf="page===Page.ShoppingList"></app-shopping-list>
 </div>
 
 

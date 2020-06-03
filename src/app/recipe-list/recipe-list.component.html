@@ -1,10 +1,14 @@
-<div class="list">
-  <h1>Recipes</h1> <button id="addBtn" (click)="newRecipe()">+</button>
-  <ul>
-    <li *ngFor="let recipe of recipeList | async" (click)="onSelect(recipe)">
-      {{ recipe.name }}
-    </li>
-  </ul>
+<div id="wrapper">
+  <div class="list">
+    <h1>Recipes</h1> <button id="addBtn" (click)="newRecipe()">+</button>
+    <ul>
+      <li *ngFor="let recipe of recipeList | async" (click)="onSelectRecipeForDetails(recipe)">
+        <p>{{ recipe.name }}</p>
+        <button click-stop-propagation (click)="selectedRecipeToMenu(recipe)">+Menu</button>
+      </li>
+    </ul>
+  </div>
+  <app-day-select *ngIf="isAddingToMenu" (selectedDay)="onSelectedDay($event)"></app-day-select>
+  <app-recipe-detail [recipe]="selectedRecipeForDetail"></app-recipe-detail>
 </div>
 
-<app-recipe-detail [recipe]="selectedRecipe"></app-recipe-detail>

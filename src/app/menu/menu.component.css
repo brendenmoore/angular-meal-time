@@ -1,0 +1,23 @@
+#wrapper {
+    width: 100%;
+    text-align: center;
+}
+
+#menuGrid {
+    display: inline-grid;
+    grid-template-columns: auto auto auto auto auto auto auto;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    width: 80%;
+}
+
+h2 { 
+    text-align: center;
+    width: 100%;
+}
+
+.item {
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;  
+    width: 100%;
+}

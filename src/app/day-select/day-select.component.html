@@ -1,0 +1,4 @@
+<h1>-Select Day-</h1>
+<div *ngFor='let day of dayStringArr'>
+    <p (click)="selectDay(timestampArr[dayStringArr.indexOf(day)])">{{day}}</p>
+</div>
