@@ -1,14 +1,17 @@
 <div id="wrapper">
   <div class="list">
     <h1>Recipes</h1> <button id="addBtn" (click)="newRecipe()">+</button>
+    <input type="text" placeholder="search" #searchInput (keyup.enter)="search(searchInput.value)">
     <ul>
-      <li *ngFor="let recipe of recipeList | async" (click)="onSelectRecipeForDetails(recipe)">
+      <li *ngFor="let recipe of recipeListToDisplay" (click)="onSelectRecipeForDetails(recipe)">
         <p>{{ recipe.name }}</p>
         <button click-stop-propagation (click)="selectedRecipeToMenu(recipe)">+Menu</button>
       </li>
     </ul>
   </div>
   <app-day-select *ngIf="isAddingToMenu" (selectedDay)="onSelectedDay($event)"></app-day-select>
+  <button *ngIf="isAddingToMenu" (click)="cancelSelectingDay()">Cancel</button>
   <app-recipe-detail [recipe]="selectedRecipeForDetail"></app-recipe-detail>
 </div>
+
 

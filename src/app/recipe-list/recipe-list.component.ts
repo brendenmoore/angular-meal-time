@@ -17,14 +17,22 @@ export class RecipeListComponent {
   recipeGoingToMenu: Recipe;
   recipeList: Observable<Recipe[]>;
   isAddingToMenu: boolean = false;
+  recipeListToDisplay: Array<Recipe>;
 
   constructor(private dbService: DatabaseService) {
     //NEED FIXED LOOK INTO SUBSCRIPTION PROMISES
-    setTimeout(() => {this.recipeList = this.dbService.getRecipeList().valueChanges()}, 100);
+    setTimeout(() => {
+      this.recipeList = this.dbService.getRecipeList().valueChanges();
+      this.recipeList.subscribe(val => this.recipeListToDisplay = val);
+    }, 30);
   }
 
   onSelectRecipeForDetails(recipe: Recipe) {
-    this.selectedRecipeForDetail = recipe;
+    if (this.selectedRecipeForDetail === recipe) {
+      this.selectedRecipeForDetail = null;
+    } else {
+      this.selectedRecipeForDetail = recipe;
+    }
   }
 
   newRecipe() {
@@ -42,11 +50,27 @@ export class RecipeListComponent {
     }
   }
 
+  cancelSelectingDay() {
+    this.isAddingToMenu = false;
+  }
+
   onSelectedDay(timestamp: number) {
     let menuItem = this.dbService.buildMenuItem(this.recipeGoingToMenu, timestamp);
     this.dbService.addMenuItem(menuItem);
     this.isAddingToMenu = false;
     this.addedMenuItem.emit(false);
+  }
+
+  search(searchTerm: string): void {
+    this.recipeListToDisplay = [];
+    this.recipeList.subscribe(list => {
+      for (let recipe of list) {
+        searchTerm = searchTerm.toLowerCase();
+        if (recipe.name.toLowerCase().indexOf(searchTerm) >= 0) {
+          this.recipeListToDisplay.push(recipe);
+        }
+      }
+    })
   }
 
 }

@@ -18,6 +18,7 @@ export class MenuComponent implements OnInit {
   timestampArr: Array<number> = [];
   selectedDay: number = null;
   observableArr: Array<Observable<MenuItem[]>> = [];
+  numOfWeeksFromNow: number = 0;
 
   constructor(private dbService: DatabaseService) {
   }
@@ -27,8 +28,8 @@ export class MenuComponent implements OnInit {
     this.initiateObservables();
   }
 
-  initiateDays() {
-    this.timestampArr = getNextSevenDays();
+  initiateDays(weeksFromNow: number=0) {
+    this.timestampArr = getNextSevenDays(weeksFromNow);
     this.dayStringArr = getDayStrings(this.timestampArr);
   }
 
@@ -46,6 +47,20 @@ export class MenuComponent implements OnInit {
 
   finishedAdding(bool: boolean) {
     this.isAdding = bool;
+  }
+
+  goToNextWeek() {
+    this.numOfWeeksFromNow++;
+    this.initiateDays(this.numOfWeeksFromNow);
+    this.observableArr = [];
+    this.initiateObservables();
+  }
+
+  goToPrevWeek() {
+    this.numOfWeeksFromNow--;
+    this.initiateDays(this.numOfWeeksFromNow);
+    this.observableArr = [];
+    this.initiateObservables();
   }
 
 }

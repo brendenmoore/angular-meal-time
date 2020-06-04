@@ -57,7 +57,12 @@ export class RecipeDetailComponent implements OnChanges {
       } else {
         this.ingredientList = [];
       }
+      if (this.recipe.name === 'New Recipe') {
+        this.isEdit = true;
+      }
       this.recipeObs = this.dbService.getRecipe(this.recipe).valueChanges();
+    } else {
+      this.recipeObs = null;
     }
   }
 

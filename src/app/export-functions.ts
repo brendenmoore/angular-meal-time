@@ -5,9 +5,9 @@ export function formatDate(timestamp: number) {
     return `${d.getMonth() + 1}-${d.getDate()}-${d.getFullYear()}`
 }
 
-export function getNextSevenDays(): Array<number> {
+export function getNextSevenDays(weeksFromNow: number = 0): Array<number> {
     let days: Array<number> = []
-    for (let i = 0; i < 7; i++) {
+    for (let i = weeksFromNow*7; i < (weeksFromNow*7)+7; i++) {
         let currentDate = new Date();
         currentDate.setDate(currentDate.getDate()+i);
         days.push(currentDate.getTime());

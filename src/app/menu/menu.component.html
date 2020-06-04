@@ -1,5 +1,7 @@
 <div id="wrapper">
-    <h1>Menu</h1>
+    <div>
+        <button class='arrowBtn' (click)="goToPrevWeek()">&#60;</button> <h1>Menu</h1> <button class='arrowBtn' (click)="goToNextWeek()">&#62;</button>
+    </div>
     <div id="menuGrid">
         <div class="item" *ngFor="let day of dayStringArr">
             <h2>{{day}}</h2>
@@ -10,6 +12,7 @@
         </div>
     </div>  
     <app-recipe-list (addedMenuItem)="finishedAdding($event)" [inputSelectedDate]="selectedDay" *ngIf="isAdding"></app-recipe-list>
+    <button *ngIf="isAdding" (click)="finishedAdding(false)">Cancel</button>
 </div>
 
 
