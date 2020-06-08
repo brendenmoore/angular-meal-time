@@ -41,7 +41,7 @@ $meal-time-theme: mat-light-theme($meal-time-primary, $meal-time-accent, $meal-t
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
 $meal-time-primary: mat-palette($mat-indigo);
-$meal-time-accent: mat-palette($mat-pink, A200, A100, A400);
+$meal-time-accent: mat-palette($mat-indigo, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
 $meal-time-warn: mat-palette($mat-red);

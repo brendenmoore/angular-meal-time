@@ -10,14 +10,26 @@ import { RecipeListComponent } from "./recipe-list/recipe-list.component";
 import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 import { MenuComponent } from './menu/menu.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
-import { DaySelectComponent } from './day-select/day-select.component';
 import { ClickStopPropagationDirective } from './click-stop-propagation.directive';
 import { DayMenuComponent } from './day-menu/day-menu.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { HeaderComponent } from './header/header.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material';
+import { MatTableModule } from '@angular/material/table';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatPaginatorModule } from '@angular/material/paginator';
+
 
 @NgModule({
-  declarations: [AppComponent, RecipeListComponent, RecipeDetailComponent, MenuComponent, ShoppingListComponent, DaySelectComponent, ClickStopPropagationDirective, DayMenuComponent],
+  declarations: [AppComponent, RecipeListComponent, RecipeDetailComponent, MenuComponent, ShoppingListComponent, ClickStopPropagationDirective, DayMenuComponent, HeaderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule, 
@@ -34,9 +46,21 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     BrowserAnimationsModule,
-    DragDropModule
+    DragDropModule,
+    MatTabsModule,
+    MatExpansionModule,
+    MatMenuModule,
+    MatIconModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatTableModule,
+    MatDividerModule,
+    MatListModule,
+    MatDialogModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent],
+  entryComponents: [RecipeListComponent]
 })
 export class AppModule {}

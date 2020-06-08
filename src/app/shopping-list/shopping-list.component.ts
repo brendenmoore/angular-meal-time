@@ -1,65 +1,75 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { DatabaseService } from '../database.service';
-import { MenuItem } from "../interfaces";
+import { MenuItem, Ingredient } from "../interfaces";
 import { Observable } from 'rxjs';
-
-enum Days {
-  'Sun',
-  'Mon',
-  'Tue',
-  'Wed',
-  'Thur',
-  'Fri',
-  'Sat'
-}
+import { getNextSevenDays, formatDate} from '../export-functions';
 
 @Component({
   selector: 'app-shopping-list',
   templateUrl: './shopping-list.component.html',
   styleUrls: ['./shopping-list.component.css']
 })
-export class ShoppingListComponent implements OnInit {
+export class ShoppingListComponent {
 
-  Days = Days
-  dayArr: Array<string> = [];
+  ingredientRefMap = new Map();
+  shoppingListMap = new Map();
   timestampArr: Array<number> = [];
   observableArr: Array<Observable<MenuItem[]>> = [];
 
   constructor(private dbService: DatabaseService) {
     this.initiateDays();
-    this.initiateObservables();
+    setTimeout(() => {
+      this.initiateObservables();
+      this.constructShoppingList();
+    }, 100);
   }
 
-  ngOnInit() {
-  }
-
-  initiateDays() {
-    let d = new Date().getDay();
-    for (let i = d; i < 7; i++) {
-      this.dayArr.push(Days[i]);
-    }
-    for (let i = 0; this.dayArr.length < 7; i++) {
-      this.dayArr.push(Days[i]);
-    }
-    for (let i = 0; i < this.dayArr.length; i++) {
-      let currentDate = new Date();
-      currentDate.setDate(currentDate.getDate()+i);
-      this.dayArr[i] = `${this.dayArr[i]} ${currentDate.getMonth() + 1}/${currentDate.getDate()}`
-      this.timestampArr.push(currentDate.getTime());
-    }
+  initiateDays(weeksFromNow: number=0) {
+    this.timestampArr = getNextSevenDays(weeksFromNow);
   }
 
   initiateObservables() {
     for(let i = 0; i < this.timestampArr.length; i++) {
-      let d = new Date(this.timestampArr[i]);
-      let day = `${d.getMonth() + 1}-${d.getDate()}-${d.getFullYear()}`;
+      let day = formatDate(this.timestampArr[i]);
       this.observableArr.push(this.dbService.getMenuDay(day).valueChanges());
     }
   }
 
-  onChecked(e, ingredientIndex, menuItem) {
-    let d = new Date(menuItem.timestamp);
-    let day = `${d.getMonth() + 1}-${d.getDate()}-${d.getFullYear()}`;
-    this.dbService.changeIngredientChecked(e.target.checked, ingredientIndex, menuItem);
+  onChecked(ingredientRefKey) {
+    this.ingredientRefMap.get(ingredientRefKey).val.forEach(ref => {
+      let ingredients = ref.menuItem.ingredients;
+      this.dbService.changeIngredientChecked(ingredients.indexOf(ref.ingredient), ref.menuItem);
+    })
   }
+
+  constructShoppingList() {
+    for (let observable of this.observableArr) {
+      let ob = observable.subscribe(menuItems => {
+        menuItems.forEach(menuItem => {
+          if (menuItem.ingredients) {
+            menuItem.ingredients.forEach(ing => { 
+              this.incrementIngredientCount(ing)
+              this.constructReferenceMap(menuItem, ing);
+            });
+          }
+        })
+      ob.unsubscribe();
+      })
+    }
+  }
+
+  incrementIngredientCount(ingredient: Ingredient) {
+    this.shoppingListMap.has(ingredient.name) ? this.shoppingListMap.get(ingredient.name).val++ : this.shoppingListMap.set(ingredient.name, {val: 1});
+  }
+
+  constructReferenceMap(menuItem: MenuItem, ingredient: Ingredient) {
+    let ingredientRef = {menuItem: menuItem, ingredient: ingredient};
+    if (this.ingredientRefMap.has(ingredient.name)) {
+      this.ingredientRefMap.get(ingredient.name).val.push(ingredientRef);
+    } else {
+      this.ingredientRefMap.set(ingredient.name, {val: [ingredientRef]});
+    }
+  }
+
 }
+

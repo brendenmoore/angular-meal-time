@@ -62,7 +62,6 @@ export class DatabaseService{
       currentIndex = result.payload.val();
       if (currentIndex) {
         menuItem.index = currentIndex;
-        console.log(menuItem.date);
         this.menu.update(`${menuItem.date}/${currentIndex}`, menuItem)
       } else {
         menuItem.index = 0;
@@ -78,7 +77,6 @@ export class DatabaseService{
   }
 
   setEntireMenuDay(menuItems: Array<any>): void {
-    menuItems.pop();
     for(let i=0; i<menuItems.length; i++) {
       menuItems[i].index = i;
     }
@@ -106,8 +104,12 @@ export class DatabaseService{
   //
   //ShoppingList data
   //
-  changeIngredientChecked(isChecked: boolean, ingredientIndex: number, menuItem: MenuItem): void {
-    this.db.object(`menu/${this.userId}/${menuItem.date}/${menuItem.index}/ingredients/${ingredientIndex}`).update({isChecked: isChecked});
+  changeIngredientChecked(ingredientIndex: number, menuItem: MenuItem): void {
+    let ob = this.db.object(`menu/${this.userId}/${menuItem.date}/${menuItem.index}/ingredients/${ingredientIndex}/isChecked`).valueChanges().subscribe(val => {
+      let bool:boolean = !(val)
+      this.db.object(`menu/${this.userId}/${menuItem.date}/${menuItem.index}/ingredients/${ingredientIndex}`).update({isChecked: bool});
+      ob.unsubscribe();
+    })
   }
 
 }

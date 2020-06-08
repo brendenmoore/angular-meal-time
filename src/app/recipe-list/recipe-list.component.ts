@@ -11,54 +11,23 @@ import { Observable } from 'rxjs';
 export class RecipeListComponent {
 
   @Output() addedMenuItem: EventEmitter<boolean> = new EventEmitter();
-  @Input() inputSelectedDate: number;
 
-  selectedRecipeForDetail: Recipe;
-  recipeGoingToMenu: Recipe;
   recipeList: Observable<Recipe[]>;
-  isAddingToMenu: boolean = false;
   recipeListToDisplay: Array<Recipe>;
+  selectedTimestamp: number = null;
+  newRecipeString: string = 'New Recipe';
 
   constructor(private dbService: DatabaseService) {
     //NEED FIXED LOOK INTO SUBSCRIPTION PROMISES
     setTimeout(() => {
       this.recipeList = this.dbService.getRecipeList().valueChanges();
-      this.recipeList.subscribe(val => this.recipeListToDisplay = val);
-    }, 30);
-  }
-
-  onSelectRecipeForDetails(recipe: Recipe) {
-    if (this.selectedRecipeForDetail === recipe) {
-      this.selectedRecipeForDetail = null;
-    } else {
-      this.selectedRecipeForDetail = recipe;
-    }
+      this.recipeList.subscribe(recipes => this.recipeListToDisplay = recipes);
+    }, 100);
   }
 
   newRecipe() {
-    let recipe: Recipe = new Recipe('New Recipe');
+    let recipe: Recipe = new Recipe(this.newRecipeString);
     this.dbService.addRecipe(recipe);
-    this.onSelectRecipeForDetails(recipe);
-  }
-
-  selectedRecipeToMenu(recipe: Recipe) {
-    this.recipeGoingToMenu = recipe;
-    if (this.inputSelectedDate) {
-      this.onSelectedDay(this.inputSelectedDate);
-    } else {
-      this.isAddingToMenu = true;
-    }
-  }
-
-  cancelSelectingDay() {
-    this.isAddingToMenu = false;
-  }
-
-  onSelectedDay(timestamp: number) {
-    let menuItem = this.dbService.buildMenuItem(this.recipeGoingToMenu, timestamp);
-    this.dbService.addMenuItem(menuItem);
-    this.isAddingToMenu = false;
-    this.addedMenuItem.emit(false);
   }
 
   search(searchTerm: string): void {
@@ -74,3 +43,4 @@ export class RecipeListComponent {
   }
 
 }
+

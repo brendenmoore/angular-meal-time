@@ -1,17 +1,24 @@
 <div id="wrapper">
   <div class="list">
-    <h1>Recipes</h1> <button id="addBtn" (click)="newRecipe()">+</button>
-    <input type="text" placeholder="search" #searchInput (keyup.enter)="search(searchInput.value)">
-    <ul>
-      <li *ngFor="let recipe of recipeListToDisplay" (click)="onSelectRecipeForDetails(recipe)">
-        <p>{{ recipe.name }}</p>
-        <button click-stop-propagation (click)="selectedRecipeToMenu(recipe)">+Menu</button>
-      </li>
-    </ul>
+
+    <div id="searchDiv">
+      <input type="text" placeholder="search" #searchInput (keyup)="search(searchInput.value)">
+      <button id="addBtn" (click)="newRecipe()">New Recipe</button>
+    </div>
+
+    <mat-accordion>
+      <mat-expansion-panel multi="false" *ngFor="let recipe of recipeListToDisplay" [expanded]="recipe.name === newRecipeString">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{ recipe.name }}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <app-recipe-detail [recipeObj]="{recipe: recipe, timestamp: selectedTimestamp}"></app-recipe-detail>
+      </mat-expansion-panel>
+    </mat-accordion>
+
   </div>
-  <app-day-select *ngIf="isAddingToMenu" (selectedDay)="onSelectedDay($event)"></app-day-select>
-  <button *ngIf="isAddingToMenu" (click)="cancelSelectingDay()">Cancel</button>
-  <app-recipe-detail [recipe]="selectedRecipeForDetail"></app-recipe-detail>
 </div>
+
 
 

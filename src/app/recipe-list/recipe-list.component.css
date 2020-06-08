@@ -1,6 +1,6 @@
 #wrapper {
   text-align: center;
-  width: 100vw;
+  width: 100%;
 }
 
 li {
@@ -8,23 +8,36 @@ li {
   justify-content: space-between;
   text-align: left;
   padding: 10px;
-  background-color: #789;
-  color: white;
+  border-bottom: 1px solid #3f51b5;
+  color: black;
   margin-bottom: 5px;
   list-style-type: none;
+  height: 50px;
+  
+}
+p {
+  line-height: 50px;
+  font-size: 11pt;
 }
 
-ul {
-  grid-column-start: 1;
-  grid-column-end: 3;
+#searchDiv {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  text-align: left;
+  padding: 10px;
+  border-bottom: 1px solid #3f51b5;
 }
+
+
 
 .list {
   padding: 20px;
   display: inline-grid;
-  width: 200px;
-  grid-template-columns: 3fr 1fr;
-  row-gap: 5px;
+  width: 90%;
+  max-width: 1000px;
+  
 }
 
 .details {
@@ -32,15 +45,27 @@ ul {
   background-color: aliceblue;
 }
 
-#addBtn {
-  padding: 0px 5px 0px 5px;
-  font-size: large;
+
+
+button {
+  height: fit-content;
+  padding: 0px 0px 0px 0px;
   width: fit-content;
+  font-size: 11pt;
   justify-self: end;
+  border: 0;
+  background-color: white;
+  line-height: 30px;
 }
 
-h1 {
-  width: fit-content;
-  align-self: end;
+button:hover {
+  border: 1px solid rgba(0, 0, 0, 0.445);
+  border-radius: 3px;
+}
+
+input {
+  width: 30%;
+  min-width: 150px;
+  padding: 5px;
 }
 

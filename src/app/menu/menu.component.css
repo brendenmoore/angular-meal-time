@@ -1,6 +1,7 @@
 #wrapper {
     width: 100%;
     text-align: center;
+    margin-top: 25px;
 }
 
 #menuGrid {
@@ -28,4 +29,46 @@ h2 {
 
 h1 {
     display: inline-block;
+}
+
+#arrows {
+    width: 70%;
+    display: inline-block;    
+}
+
+.mat-table {
+    display: inline-block;
+    width: 70%;
+    min-width: 350px;
+  }
+
+.mat-column-Date {
+    flex: 0 0 10% !important;
+    min-width: 70px;
+    white-space: unset !important;
+}
+
+app-day-menu {
+    width: 100%;
+    min-width: 200px;
+    margin: 20px;
+}
+
+button {
+    border: 0;
+    background-color: white;
+    padding: 5px;
+    margin-bottom: 5px;
+    border-radius: 20px;
+}
+
+button:hover {
+    background-color: rgba(0, 0, 0, 0.08);;
+}
+
+div {
+    text-align: left;
+}
+mat-cell {
+    display: block;
 }

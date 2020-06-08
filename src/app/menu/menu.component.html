@@ -1,18 +1,32 @@
 <div id="wrapper">
-    <div>
-        <button class='arrowBtn' (click)="goToPrevWeek()">&#60;</button> <h1>Menu</h1> <button class='arrowBtn' (click)="goToNextWeek()">&#62;</button>
+
+    <div id="arrows">
+        <button (click)="goToPrevWeek()"><mat-icon>keyboard_arrow_left</mat-icon></button>
+        <button (click)="goToNextWeek()"><mat-icon>keyboard_arrow_right</mat-icon></button>
     </div>
-    <div id="menuGrid">
-        <div class="item" *ngFor="let day of dayStringArr">
-            <h2>{{day}}</h2>
-        </div>
-        <div *ngFor="let day of dayStringArr" class="item">
-            <app-day-menu [menu]="observableArr[dayStringArr.indexOf(day)]"></app-day-menu>
-            <button (click)="addingToMenu(timestampArr[dayStringArr.indexOf(day)])">Add</button>
-        </div>
-    </div>  
-    <app-recipe-list (addedMenuItem)="finishedAdding($event)" [inputSelectedDate]="selectedDay" *ngIf="isAdding"></app-recipe-list>
-    <button *ngIf="isAdding" (click)="finishedAdding(false)">Cancel</button>
+
+    <mat-table [dataSource]="dayStringArr" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="Date" class="w100">
+            <mat-header-cell *matHeaderCellDef>Date</mat-header-cell>
+            <mat-cell *matCellDef="let day"> {{day}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Food">
+            <mat-header-cell *matHeaderCellDef>Food</mat-header-cell>
+            <mat-cell *matCellDef="let day">
+                <app-day-menu [menu]="observableArr[dayStringArr.indexOf(day)]"></app-day-menu>
+                <div>
+                    <button (click)="openRecipeSelect(timestampArr[dayStringArr.indexOf(day)])"><mat-icon>plus_one</mat-icon></button>
+                </div>
+            </mat-cell> 
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        
+    </mat-table>     
+
 </div>
 
 

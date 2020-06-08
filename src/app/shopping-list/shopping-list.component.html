@@ -1,17 +1,10 @@
 <div id="wrapper">
-    <h1>Shopping List</h1>
-    <div class="dayContainer" *ngFor="let day of dayArr">
-        {{day}}
-        <div  *ngFor="let menuItem of observableArr[dayArr.indexOf(day)] | async">
-            <ul *ngIf="menuItem.ingredients" class="list">
-                <div>
-                    {{menuItem.recipeName}}
-                </div>
-                <li *ngFor="let ingredient of menuItem.ingredients">
-                    <input type="checkbox" [checked]="ingredient.isChecked" (change)="onChecked($event, menuItem.ingredients.indexOf(ingredient), menuItem)">
-                    {{ingredient.name}}
-                </li>
-            </ul>
+    <mat-selection-list>
+        <div *ngFor="let ingredient of shoppingListMap | keyvalue">
+            <mat-list-option (click)="onChecked(ingredient.key)" [selected]="ingredientRefMap.get(ingredient.key).val[0].ingredient.isChecked">
+                {{ingredient.key}} x{{ingredient.value.val}}
+            </mat-list-option>
         </div>
-    </div>
+    </mat-selection-list>
 </div>
+

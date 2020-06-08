@@ -8,11 +8,7 @@ import { Page } from './enums';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-
-  Page = Page;
-  page: Page = Page.RecipeList;
-
   constructor(public user: UserService) {}
-
   ngOnInit() {}
 }
+

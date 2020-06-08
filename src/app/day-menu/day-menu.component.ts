@@ -3,6 +3,7 @@ import { MenuItem } from "../interfaces";
 import { Observable } from 'rxjs';
 import { DatabaseService } from '../database.service';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { MenuComponent } from '../menu/menu.component'
 
 @Component({
   selector: 'app-day-menu',
@@ -12,26 +13,24 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 export class DayMenuComponent implements OnChanges {
 
   @Input() menu: Observable<MenuItem[]>;
+  menuItems: Array<MenuItem> = [];
+  displayedColumns: string[] = ['Name']
 
-  menuItems: Array<any> = [];
-  selectedRecipe: MenuItem;
-
-  constructor(private dbService: DatabaseService) {}
+  constructor(private dbService: DatabaseService, private menuComp: MenuComponent) {}
 
   ngOnChanges() {
     this.organizeMenu()
+    this.menuComp.dialog.closeAll()
   }
 
   organizeMenu() {
     if (this.menu && this.menuItems.length === 0) {
       this.menu.subscribe(results => {
         this.menuItems = results;
+        this.menuItems.pop();
+        this.menuComp.dialog.closeAll()
       })
     }
-  }
-
-  onSelect(recipe: MenuItem) {
-    this.selectedRecipe = recipe;
   }
 
   removeMenuItem(menuItem: MenuItem) {
@@ -42,6 +41,4 @@ export class DayMenuComponent implements OnChanges {
     moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     this.dbService.setEntireMenuDay(this.menuItems);
   }
-
 }
-

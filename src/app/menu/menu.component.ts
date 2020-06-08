@@ -1,9 +1,10 @@
 import { Component, OnInit, } from '@angular/core';
-import { getNextSevenDays, getDayStrings} from '../export-functions';
+import { getNextSevenDays, getDayStrings , formatDate} from '../export-functions';
 import { DatabaseService } from '../database.service'
 import { Observable } from 'rxjs';
 import { MenuItem } from "../interfaces";
-import { formatDate } from '../export-functions';
+import { MatDialog } from '@angular/material/dialog';
+import { RecipeListComponent } from '../recipe-list/recipe-list.component';
 
 @Component({
   selector: 'app-menu',
@@ -12,20 +13,18 @@ import { formatDate } from '../export-functions';
 })
 export class MenuComponent implements OnInit {
 
-  isAdding: boolean = false;
-  isAddingToMenu: boolean = true;
   dayStringArr: Array<string> = [];
   timestampArr: Array<number> = [];
-  selectedDay: number = null;
   observableArr: Array<Observable<MenuItem[]>> = [];
   numOfWeeksFromNow: number = 0;
+  displayedColumns: string[] = ['Date', 'Food']
 
-  constructor(private dbService: DatabaseService) {
-  }
+  constructor(private dbService: DatabaseService, public dialog: MatDialog) {}
 
   ngOnInit() { 
     this.initiateDays();
-    this.initiateObservables();
+    //NEED FIXED
+    setTimeout(() => this.initiateObservables(), 100);
   }
 
   initiateDays(weeksFromNow: number=0) {
@@ -34,19 +33,15 @@ export class MenuComponent implements OnInit {
   }
 
   initiateObservables() {
-    for(let i = 0; i < this.timestampArr.length; i++) {
-      let day = formatDate(this.timestampArr[i]);
-      this.observableArr.push(this.dbService.getMenuDay(day).valueChanges());
-    }
+    this.timestampArr.forEach(timestamp => {
+      this.observableArr.push(this.dbService.getMenuDay(formatDate(timestamp)).valueChanges())
+    });
   }
 
-  addingToMenu(day: number) {
-    this.isAdding = true;
-    this.selectedDay = day;
-  }
-
-  finishedAdding(bool: boolean) {
-    this.isAdding = bool;
+  openRecipeSelect(timestamp: number) {
+    const dialogRef = this.dialog.open(RecipeListComponent);
+    let instance = dialogRef.componentInstance;
+    instance.selectedTimestamp = timestamp;
   }
 
   goToNextWeek() {

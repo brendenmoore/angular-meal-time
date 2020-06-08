@@ -1,13 +1,10 @@
-<div class="list">
-    <ul class="animationContainer" cdkDropList [cdkDropListData]="menuItems" (cdkDropListDropped)="onDrop($event)">
-        <div class="animationItem" cdkDrag *ngFor="let menuItem of menuItems">
-            <div *ngIf="menuItem.recipeName">
-                <li>
-                    {{ menuItem.recipeName }}
-                    <button click-stop-propagation (click)="removeMenuItem(menuItem)">x</button>
-                </li>
-            </div>
-        </div>
-    </ul>
-</div>
-
+<mat-list class="animationContainer" cdkDropList [cdkDropListData]="menuItems" (cdkDropListDropped)="onDrop($event)">
+    <div class="animationItem" cdkDrag class="listItem" *ngFor="let menuItem of menuItems">
+        <mat-list-item><p>{{menuItem.recipeName}}</p>
+            <button (click)="removeMenuItem(menuItem)">
+                <mat-icon>delete</mat-icon>
+              </button>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+    </div>
+</mat-list>
