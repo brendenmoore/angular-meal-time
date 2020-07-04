@@ -1,5 +1,5 @@
 import { Component, OnInit, } from '@angular/core';
-import { getNextSevenDays, getDayStrings , formatDate} from '../export-functions';
+import { getNextSevenDays, getDayStrings, formatDate, getWeek } from '../export-functions';
 import { DatabaseService } from '../database.service'
 import { Observable } from 'rxjs';
 import { MenuItem } from "../interfaces";
@@ -17,18 +17,19 @@ export class MenuComponent implements OnInit {
   timestampArr: Array<number> = [];
   observableArr: Array<Observable<MenuItem[]>> = [];
   numOfWeeksFromNow: number = 0;
-  displayedColumns: string[] = ['Date', 'Food']
+  displayedColumns: string[] = ['Date', 'Food'];
+  daysToDisplay: number = 7;
 
-  constructor(private dbService: DatabaseService, public dialog: MatDialog) {}
+  constructor(private dbService: DatabaseService, public dialog: MatDialog) { }
 
-  ngOnInit() { 
+  ngOnInit() {
     this.initiateDays();
     //NEED FIXED
     setTimeout(() => this.initiateObservables(), 100);
   }
 
-  initiateDays(weeksFromNow: number=0) {
-    this.timestampArr = getNextSevenDays(weeksFromNow);
+  initiateDays(weeksFromNow: number = 0) {
+    this.timestampArr = getWeek(weeksFromNow, this.daysToDisplay);
     this.dayStringArr = getDayStrings(this.timestampArr);
   }
 
