@@ -1,5 +1,5 @@
 import { Component, OnInit, } from '@angular/core';
-import { getNextSevenDays, getDayStrings, formatDate, getWeek } from '../export-functions';
+import { getNextNumberOfDays, getDayStrings, formatDate } from '../export-functions';
 import { DatabaseService } from '../database.service'
 import { Observable } from 'rxjs';
 import { MenuItem } from "../interfaces";
@@ -29,7 +29,7 @@ export class MenuComponent implements OnInit {
   }
 
   initiateDays(weeksFromNow: number = 0) {
-    this.timestampArr = getWeek(weeksFromNow, this.daysToDisplay);
+    this.timestampArr = getNextNumberOfDays(weeksFromNow, this.daysToDisplay);
     this.dayStringArr = getDayStrings(this.timestampArr);
   }
 

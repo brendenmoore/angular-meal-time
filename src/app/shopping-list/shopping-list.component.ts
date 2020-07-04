@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { DatabaseService } from '../database.service';
 import { MenuItem, Ingredient } from "../interfaces";
 import { Observable } from 'rxjs';
-import { getNextSevenDays, formatDate} from '../export-functions';
+import { getNextNumberOfDays, formatDate } from '../export-functions';
 
 @Component({
   selector: 'app-shopping-list',
@@ -24,12 +24,12 @@ export class ShoppingListComponent {
     }, 100);
   }
 
-  initiateDays(weeksFromNow: number=0) {
-    this.timestampArr = getNextSevenDays(weeksFromNow);
+  initiateDays(weeksFromNow: number = 0) {
+    this.timestampArr = getNextNumberOfDays(weeksFromNow);
   }
 
   initiateObservables() {
-    for(let i = 0; i < this.timestampArr.length; i++) {
+    for (let i = 0; i < this.timestampArr.length; i++) {
       let day = formatDate(this.timestampArr[i]);
       this.observableArr.push(this.dbService.getMenuDay(day).valueChanges());
     }
@@ -47,27 +47,27 @@ export class ShoppingListComponent {
       let ob = observable.subscribe(menuItems => {
         menuItems.forEach(menuItem => {
           if (menuItem.ingredients) {
-            menuItem.ingredients.forEach(ing => { 
+            menuItem.ingredients.forEach(ing => {
               this.incrementIngredientCount(ing)
               this.constructReferenceMap(menuItem, ing);
             });
           }
         })
-      ob.unsubscribe();
+        ob.unsubscribe();
       })
     }
   }
 
   incrementIngredientCount(ingredient: Ingredient) {
-    this.shoppingListMap.has(ingredient.name) ? this.shoppingListMap.get(ingredient.name).val++ : this.shoppingListMap.set(ingredient.name, {val: 1});
+    this.shoppingListMap.has(ingredient.name) ? this.shoppingListMap.get(ingredient.name).val++ : this.shoppingListMap.set(ingredient.name, { val: 1 });
   }
 
   constructReferenceMap(menuItem: MenuItem, ingredient: Ingredient) {
-    let ingredientRef = {menuItem: menuItem, ingredient: ingredient};
+    let ingredientRef = { menuItem: menuItem, ingredient: ingredient };
     if (this.ingredientRefMap.has(ingredient.name)) {
       this.ingredientRefMap.get(ingredient.name).val.push(ingredientRef);
     } else {
-      this.ingredientRefMap.set(ingredient.name, {val: [ingredientRef]});
+      this.ingredientRefMap.set(ingredient.name, { val: [ingredientRef] });
     }
   }
 

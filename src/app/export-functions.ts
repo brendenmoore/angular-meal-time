@@ -5,18 +5,24 @@ export function formatDate(timestamp: number) {
   return `${d.getMonth() + 1}-${d.getDate()}-${d.getFullYear()}`
 }
 
-export function getNextSevenDays(weeksFromNow: number = 0): Array<number> {
+// For showing a certain number of days starting with today
+export function getNextNumberOfDays(calendarPage: number = 0, daysPerPage: number = 7): Array<number> {
   let days: Array<number> = []
-  for (let i = weeksFromNow * 7; i < (weeksFromNow * 7) + 7; i++) {
-    let currentDate = new Date();
-    currentDate.setDate(currentDate.getDate() + i);
-    days.push(currentDate.getTime());
+  // if it's default seven days, the week starts on sunday
+  if (daysPerPage === 7) { return getWeek(calendarPage) }
+  // otherwise it shows current day first
+  else {
+    for (let i = calendarPage * daysPerPage; i < (calendarPage * daysPerPage) + daysPerPage; i++) {
+      let currentDate = new Date();
+      currentDate.setDate(currentDate.getDate() + i);
+      days.push(currentDate.getTime());
+    }
+    return days;
   }
-  return days;
 }
 
-// to replace getNextSevenDays - returns seven days always starting on Sunday rather than current day
-export function getWeek(weeksFromNow: number = 0, numberOfDaysToDisplay: number = 7): Array<number> {
+// for showing a standard week starting on sunday or monday
+export function getWeek(weeksFromNow: number = 0): Array<number> {
   let startOnSunday = true;
   let days: Array<number> = []
   let currentDate = new Date();
@@ -27,7 +33,7 @@ export function getWeek(weeksFromNow: number = 0, numberOfDaysToDisplay: number 
   currentDate.setDate(diff - (startOnSunday ? 1 : 0));
   // add first day
   days.push(currentDate.getTime());
-  for (let i = 0; i < numberOfDaysToDisplay - 1; i++) {
+  for (let i = 0; i < 7 - 1; i++) {
     currentDate.setDate(currentDate.getDate() + 1);
     days.push(currentDate.getTime());
   }
