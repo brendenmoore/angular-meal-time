@@ -1,14 +1,10 @@
-<ng-template #login>
-    <button (click)="user.login()">Login</button>
-</ng-template>
-
-
-<div *ngIf="user.uid | async as uid; else login">
-    <p>User: {{uid}}</p>
-    <button (click)="user.logout()">Logout</button>
-    <p>It works!</p>
-    <button (click)='data.createUser(userId)'>test</button>
-    <app-recipe-list></app-recipe-list>
+<app-header></app-header>
+<div *ngIf="user.uid | async">
+    <mat-tab-group dynamicHeight mat-align-tabs="center">
+        <mat-tab label="Recipes"><app-recipe-list></app-recipe-list></mat-tab>
+        <mat-tab label="Menu"><app-menu></app-menu></mat-tab>
+        <mat-tab label="Shopping"><app-shopping-list></app-shopping-list></mat-tab>
+    </mat-tab-group>
 </div>
 
 

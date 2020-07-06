@@ -1,0 +1,35 @@
+#wrapper {
+    width: 100vw;
+    text-align: center;
+    
+}
+
+.dayContainer {
+    border: 1px solid black;
+    width: 300px;
+    padding: 10px;
+    margin: 10px auto 10px auto;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+    padding: 10px;
+    background-color: #789;
+    color: white;
+    margin-bottom: 5px;
+    list-style-type: none;
+  }
+
+  .list {
+    display: inline-block;
+    padding: 20px;
+    width: 200px;
+  }
+
+  mat-selection-list {
+    display: inline-block;
+    width: 30%;
+    text-align: left;
+  }

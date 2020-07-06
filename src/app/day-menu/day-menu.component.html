@@ -1,0 +1,10 @@
+<mat-list class="animationContainer" cdkDropList [cdkDropListData]="menuItems" (cdkDropListDropped)="onDrop($event)">
+    <div class="animationItem" cdkDrag class="listItem" *ngFor="let menuItem of menuItems">
+        <mat-list-item><p>{{menuItem.recipeName}}</p>
+            <button (click)="removeMenuItem(menuItem)">
+                <mat-icon>delete</mat-icon>
+              </button>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+    </div>
+</mat-list>

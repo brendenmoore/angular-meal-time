@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
-import { of as observableOf, Observable} from 'rxjs';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { auth } from 'firebase';
-import { map, switchMap} from 'rxjs/operators';
-import { AngularFireDatabase } from 'angularfire2/database';
-import { nullSafeIsEquivalent } from '@angular/compiler/src/output/output_ast';
+import { map } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +17,7 @@ export class UserService {
     }
   }))
 
-  constructor(private afAuth: AngularFireAuth, private db: AngularFireDatabase) { }
+  constructor(private afAuth: AngularFireAuth) { }
 
   login() {
     this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());

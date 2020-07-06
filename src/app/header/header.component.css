@@ -1,0 +1,22 @@
+#wrapper {
+    height: 50px;
+    background-color: #3f51b5;
+}
+
+img {
+    max-height: 100%;
+}
+
+button {
+    background-color: transparent;
+    color: white;
+    border: 0;
+    position: absolute;
+    right: 5px;
+    top: 13px;
+    text-align: right;
+}
+
+span {
+    color: black;
+}
