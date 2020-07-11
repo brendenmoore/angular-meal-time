@@ -1,0 +1,10 @@
+<div id="wrapper">
+    <mat-selection-list>
+        <div *ngFor="let ingredient of shoppingListMap | keyvalue">
+            <mat-list-option (click)="onChecked(ingredient.key)" [selected]="ingredientRefMap.get(ingredient.key).val[0].ingredient.isChecked">
+                {{ingredient.key}} x{{ingredient.value.val}}
+            </mat-list-option>
+        </div>
+    </mat-selection-list>
+</div>
+

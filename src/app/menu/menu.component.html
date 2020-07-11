@@ -1,0 +1,38 @@
+<div id="wrapper">
+
+  <div id="arrows">
+    <button (click)="goToPrevWeek()">
+      <mat-icon>keyboard_arrow_left</mat-icon>
+    </button>
+    <button (click)="goToNextWeek()">
+      <mat-icon>keyboard_arrow_right</mat-icon>
+    </button>
+    <span>Days to Display: </span>
+    <input [(ngModel)]="daysToDisplay" type="number">
+  </div>
+
+  <mat-table [dataSource]="dayStringArr" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="Date" class="w100">
+      <mat-header-cell *matHeaderCellDef>Date</mat-header-cell>
+      <mat-cell *matCellDef="let day"> {{day}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Food">
+      <mat-header-cell *matHeaderCellDef>Food</mat-header-cell>
+      <mat-cell *matCellDef="let day">
+        <app-day-menu [menu]="observableArr[dayStringArr.indexOf(day)]"></app-day-menu>
+        <div>
+          <button (click)="openRecipeSelect(timestampArr[dayStringArr.indexOf(day)])">
+            <mat-icon>plus_one</mat-icon>
+          </button>
+        </div>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+  </mat-table>
+
+</div>

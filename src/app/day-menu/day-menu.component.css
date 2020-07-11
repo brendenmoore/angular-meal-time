@@ -1,0 +1,31 @@
+  .cdk-drag-placeholder {
+    opacity: 0;
+  }
+  
+  .cdk-drag-animating {
+    transition: transform 200ms cubic-bezier(1, 0, 0, 0);
+  }
+  
+  .animationContainer.cdk-drop-list-dragging .animationItem:not(.cdk-drag-placeholder) {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }
+
+  .cdk-drag-preview button{
+    display: none;
+  }
+
+  p {
+    width: 90%;
+    text-align: left;
+  }
+
+  button {
+    background-color: white;
+    border: 0;
+    border-radius: 20px;
+    padding: 6px 6px 6px 6px;
+  }
+
+  button:hover {
+    background-color: rgba(0, 0, 0, 0.08);;
+  }

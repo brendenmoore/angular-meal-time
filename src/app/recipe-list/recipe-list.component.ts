@@ -1,9 +1,6 @@
-import { Component, OnInit } from "@angular/core";
-import { Recipe } from "../interfaces";
-import { RECIPES } from "../fake-recipes";
+import { Component, Output, EventEmitter, Input } from "@angular/core";
+import { Recipe} from "../interfaces";
 import { DatabaseService } from '../database.service'
-import { AngularFireList } from 'angularfire2/database';
-import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -11,39 +8,39 @@ import { Observable } from 'rxjs';
   templateUrl: "./recipe-list.component.html",
   styleUrls: ["./recipe-list.component.css"],
 })
-export class RecipeListComponent implements OnInit {
-  recipes: Recipe[];
-  selectedRecipe: Recipe;
+export class RecipeListComponent {
+
+  @Output() addedMenuItem: EventEmitter<boolean> = new EventEmitter();
+
   recipeList: Observable<Recipe[]>;
+  recipeListToDisplay: Array<Recipe>;
+  selectedTimestamp: number = null;
+  newRecipeString: string = 'New Recipe';
 
   constructor(private dbService: DatabaseService) {
-    this.recipeList = this.dbService.getRecipeList().valueChanges();
-    this.dbService.getRecipeList().valueChanges()
+    //NEED FIXED LOOK INTO SUBSCRIPTION PROMISES
+    setTimeout(() => {
+      this.recipeList = this.dbService.getRecipeList().valueChanges();
+      this.recipeList.subscribe(recipes => this.recipeListToDisplay = recipes);
+    }, 100);
   }
 
-  ngOnInit() { }
-
-  onSelect(recipe: Recipe) {
-    this.selectedRecipe = recipe;
-  }
-
-  newRecipe(name: string) {
-    let recipe: Recipe = {
-      name: name
-    }
+  newRecipe() {
+    let recipe: Recipe = new Recipe(this.newRecipeString);
     this.dbService.addRecipe(recipe);
   }
 
-  // getRecipes() {
-  //   // console.log(this.dbService.getRecipeList());
-  //   // this.dbService.getRecipeList().snapshotChanges().pipe(map(changes =>
-  //   //   changes.map(c => 
-  //   //     ({key: c.payload.key, ...c.payload.val()})
-  //   //     ))).subscribe(items => {
-  //   //       return items;
-  //   //     })
-  // }
-
-  
+  search(searchTerm: string): void {
+    this.recipeListToDisplay = [];
+    this.recipeList.subscribe(list => {
+      for (let recipe of list) {
+        searchTerm = searchTerm.toLowerCase();
+        if (recipe.name.toLowerCase().indexOf(searchTerm) >= 0) {
+          this.recipeListToDisplay.push(recipe);
+        }
+      }
+    })
+  }
 
 }
+

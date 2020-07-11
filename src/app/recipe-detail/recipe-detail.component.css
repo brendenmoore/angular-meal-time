@@ -1,4 +1,45 @@
 .details {
-  padding: 20px;
-  background-color: aliceblue;
+  text-align: left;
+}
+
+.table {
+  width: 30%;
+  display: inline-grid;
+  grid-template-columns: 1fr 3fr;
+  min-width: 280px;
+}
+
+button {
+  height: fit-content;
+  padding: 3px;
+  width: fit-content;
+  font-size: 11pt;
+  border: 0;
+  background-color: white;
+}
+
+button:hover {
+  border: 1px solid rgba(0, 0, 0, 0.445);
+  border-radius: 3px;
+}
+
+#editBtns {
+  margin: 10px;
+  border-top: 1px solid rgba(0, 0, 0, 0.445);
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+#editBtns button {
+  margin-top: 10px;
+  width: 50%;
+}
+
+input {
+  padding: 3px;
+  margin: 3px;
+}
+
+p {
+  line-height: 23px;
 }

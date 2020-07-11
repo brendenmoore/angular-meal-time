@@ -1,14 +1,24 @@
-<div>
-<input #recipeName type="text" placeholder="Recipe Name" (keyup.enter)="newRecipe(recipeName.value); recipeName.value = ''">
+<div id="wrapper">
+  <div class="list">
+
+    <div id="searchDiv">
+      <input type="text" placeholder="search" #searchInput (keyup)="search(searchInput.value)">
+      <button id="addBtn" (click)="newRecipe()">New Recipe</button>
+    </div>
+
+    <mat-accordion>
+      <mat-expansion-panel multi="false" *ngFor="let recipe of recipeListToDisplay" [expanded]="recipe.name === newRecipeString">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{ recipe.name }}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <app-recipe-detail [recipeObj]="{recipe: recipe, timestamp: selectedTimestamp}"></app-recipe-detail>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+  </div>
 </div>
 
-<div class="list">
-  <h1>Recipes</h1>
-  <ul>
-    <li *ngFor="let recipe of recipeList | async" (click)="onSelect(recipe)">
-      {{recipe.name }}
-    </li>
-  </ul>
-</div>
 
-<app-recipe-detail [recipe]="selectedRecipe"></app-recipe-detail>
+
