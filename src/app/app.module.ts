@@ -20,7 +20,7 @@ import { HeaderComponent } from './header/header.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material';
+import { MatNativeDateModule, MatButtonModule } from '@angular/material';
 import { MatTableModule } from '@angular/material/table';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
@@ -58,7 +58,8 @@ import { NewRecipeComponent } from './new-recipe/new-recipe.component';
     MatDividerModule,
     MatListModule,
     MatDialogModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent],

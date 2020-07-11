@@ -46,24 +46,6 @@ p {
   background-color: aliceblue;
 }
 
-
-
-button {
-  height: fit-content;
-  padding: 0px 0px 0px 0px;
-  width: fit-content;
-  font-size: 11pt;
-  justify-self: end;
-  border: 0;
-  background-color: white;
-  line-height: 30px;
-}
-
-button:hover {
-  border: 1px solid rgba(0, 0, 0, 0.445);
-  border-radius: 3px;
-}
-
 input {
   width: 30%;
   min-width: 150px;

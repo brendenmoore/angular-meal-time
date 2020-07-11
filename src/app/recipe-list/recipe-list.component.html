@@ -3,7 +3,7 @@
 
     <div id="searchDiv">
       <input type="text" placeholder="search" #searchInput (keyup)="search(searchInput.value)">
-      <button id="addBtn" (click)="newRecipe()">New Recipe</button>
+      <button mat-button (click)="newRecipe()">New Recipe</button>
     </div>
 
     <mat-accordion>
