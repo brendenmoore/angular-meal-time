@@ -9,15 +9,18 @@ import { map } from 'rxjs/operators';
 })
 export class UserService {
 
-  uid = this.afAuth.authState.pipe(map(authState => {
+  uidObs = this.afAuth.authState.pipe(map(authState => {
     if (!authState) {
       return null;
     } else {
       return authState.uid;
     }
   }))
+  uid: string;
 
-  constructor(private afAuth: AngularFireAuth) { }
+  constructor(private afAuth: AngularFireAuth) {
+    this.uidObs.subscribe(uidString => this.uid = uidString);
+  }
 
   login() {
     this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());

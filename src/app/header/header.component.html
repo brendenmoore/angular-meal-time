@@ -7,7 +7,7 @@
     </button>
 
     <mat-menu #menu="matMenu" >
-      <button *ngIf="user.uid | async as uid; else login" mat-menu-item (click)="user.logout()">
+      <button *ngIf="user.uidObs | async as uid; else login" mat-menu-item (click)="user.logout()">
         <mat-icon>logout</mat-icon>
         <span>logout</span>
       </button>

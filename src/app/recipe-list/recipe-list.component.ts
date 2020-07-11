@@ -18,11 +18,8 @@ export class RecipeListComponent {
   newRecipeString: string = 'New Recipe';
 
   constructor(private dbService: DatabaseService) {
-    //NEED FIXED LOOK INTO SUBSCRIPTION PROMISES
-    setTimeout(() => {
-      this.recipeList = this.dbService.getRecipeList().valueChanges();
-      this.recipeList.subscribe(recipes => this.recipeListToDisplay = recipes);
-    }, 100);
+    this.recipeList = this.dbService.getRecipeList().valueChanges();
+    this.recipeList.subscribe(recipes => this.recipeListToDisplay = recipes);
   }
 
   newRecipe() {
