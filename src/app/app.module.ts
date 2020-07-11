@@ -26,14 +26,15 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { NewRecipeComponent } from './new-recipe/new-recipe.component';
 
 
 @NgModule({
-  declarations: [AppComponent, RecipeListComponent, RecipeDetailComponent, MenuComponent, ShoppingListComponent, ClickStopPropagationDirective, DayMenuComponent, HeaderComponent],
+  declarations: [AppComponent, RecipeListComponent, RecipeDetailComponent, MenuComponent, ShoppingListComponent, ClickStopPropagationDirective, DayMenuComponent, HeaderComponent, NewRecipeComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule, 
-    FormsModule,  
+    AppRoutingModule,
+    FormsModule,
     AngularFireModule.initializeApp({
       apiKey: "AIzaSyBAnjddDgi69in-aGJ5Yi1W4h5qobTr2rE",
       authDomain: "angular-meal-time.firebaseapp.com",
@@ -42,7 +43,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
       storageBucket: "angular-meal-time.appspot.com",
       messagingSenderId: "493166147925",
       appId: "1:493166147925:web:0a87ad55ab264c22e5d7dc"
-    }), 
+    }),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     BrowserAnimationsModule,
@@ -61,6 +62,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [RecipeListComponent]
+  entryComponents: [RecipeListComponent, NewRecipeComponent]
 })
 export class AppModule {}

@@ -7,7 +7,8 @@
     </div>
 
     <mat-accordion>
-      <mat-expansion-panel multi="false" *ngFor="let recipe of recipeListToDisplay" [expanded]="recipe.name === newRecipeString">
+      <mat-expansion-panel multi="false" *ngFor="let recipe of recipeListToDisplay"
+        [expanded]="recipe.name === newRecipeString">
         <mat-expansion-panel-header>
           <mat-panel-title>
             {{ recipe.name }}
@@ -19,6 +20,3 @@
 
   </div>
 </div>
-
-
-
