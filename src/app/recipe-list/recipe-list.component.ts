@@ -24,15 +24,11 @@ export class RecipeListComponent {
     setTimeout(() => {
       this.recipeList = this.dbService.getRecipeList().valueChanges();
       this.recipeList.subscribe(recipes => this.recipeListToDisplay = recipes);
-    }, 200);
+    }, 500);
   }
 
   newRecipe(): void {
     const dialogRef = this.dialog.open(NewRecipeComponent);
-
-    // move this stuff to new recipe component
-    // let recipe: Recipe = new Recipe(this.newRecipeString);
-    // this.dbService.addRecipe(recipe);
   }
 
   search(searchTerm: string): void {

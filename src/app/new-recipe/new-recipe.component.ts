@@ -22,8 +22,8 @@ export class NewRecipeComponent implements OnInit {
     let j = form.value;
     this.recipe = new Recipe(j.name, j.prepTime, j.cookTime, j.servings, j.directions, j.notes)
     this.dbService.addRecipe(this.recipe);
-    // this.dbService.setRecipeIngredients(this.recipe, this.ingredientList);
     this.dialogRef.close();
+    // this.dbService.setRecipeIngredients(this.recipe, this.ingredientList);
   }
 
 }

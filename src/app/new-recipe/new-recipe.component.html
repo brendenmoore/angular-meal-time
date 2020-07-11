@@ -1,18 +1,14 @@
-<h1 mat-dialog-title>New Recipe</h1>
-<div mat-dialog-content>
+<h1>New Recipe</h1>
 
-  <form>
-    <p>name: </p><input name="name" ngModel type="text" [(ngModel)]="recipe.name">
-    <p>prep time: </p><input name="prepTime" ngModel type="text" [(ngModel)]="recipe.prepTime">
-    <p>cook time: </p><input name="cookTime" ngModel type="text" [(ngModel)]="recipe.cookTime">
-    <p>servings: </p><input name="servings" ngModel type="text" [(ngModel)]="recipe.servings">
-    <p>directions: </p><input name="directions" ngModel type="text" [(ngModel)]="recipe.directions">
-    <p>notes: </p><input name="notes" ngModel type="text" [(ngModel)]="recipe.notes">
-  </form>
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onSave()">Save</button>
-</div>
-
+<form #newRecipeForm="ngForm" class="table" (ngSubmit)="onSave(newRecipeForm)" novalidate>
+  <p>name: </p><input name="name" ngModel type="text" >
+  <p>prep time: </p><input name="prepTime" ngModel type="text" >
+  <p>cook time: </p><input name="cookTime" ngModel type="text" >
+  <p>servings: </p><input name="servings" ngModel type="text" >
+  <p>directions: </p><input name="directions" ngModel type="text" >
+  <p>notes: </p><input name="notes" ngModel type="text" >
+  <div><p>ingredients: </p></div>
+  <button type="submit">Save</button>
+</form>
 
 
