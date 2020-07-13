@@ -1,5 +1,5 @@
 <app-header></app-header>
-<div *ngIf="user.uid | async">
+<div *ngIf="user.uidObs | async">
     <mat-tab-group dynamicHeight mat-align-tabs="center">
         <mat-tab label="Recipes"><app-recipe-list></app-recipe-list></mat-tab>
         <mat-tab label="Menu"><app-menu></app-menu></mat-tab>

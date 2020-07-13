@@ -4,6 +4,7 @@ import { UserService } from './user.service';
 import { User, Recipe, MenuItem} from './interfaces'
 import { formatDate } from './export-functions'
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -11,15 +12,13 @@ export class DatabaseService{
 
   userId: string = null
   users: AngularFireList<User> = null
-  recipes: AngularFireList<Recipe> = null
+  recipes: AngularFireList<Recipe> = null;
   menu: AngularFireList<MenuItem> = null
 
   constructor(private db: AngularFireDatabase, private user: UserService) {
-    this.user.uid.subscribe(uid => {
-      this.userId = uid;
-      this.recipes = this.db.list(`recipes/${this.userId}`);
-      this.menu = this.db.list(`menu/${this.userId}`)
-    });
+    this.userId = this.user.uid;
+    this.recipes = this.db.list(`recipes/${this.userId}`);
+    this.menu = this.db.list(`menu/${this.userId}`);
   }
 
   //
@@ -37,7 +36,7 @@ export class DatabaseService{
   }
 
   getRecipeList(): AngularFireList<Recipe> {
-      return this.recipes;
+    return this.recipes;
   }
 
   getRecipe(recipe: Recipe): AngularFireObject<Recipe> {
