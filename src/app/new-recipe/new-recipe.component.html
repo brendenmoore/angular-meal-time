@@ -1,6 +1,9 @@
-<h1>New Recipe</h1>
+<mat-dialog-content>
+  <h1>New Recipe</h1>
 
 <form #newRecipeForm="ngForm" class="new-recipe-form" (ngSubmit)="onSave(newRecipeForm)" novalidate>
+
+  <!-- basic inputs -->
   <p>
     <mat-form-field>
       <input name="name" ngModel type="text" matInput placeholder="Recipe Name">
@@ -32,10 +35,18 @@
     </mat-form-field>
   </p>
 
-
+  <ol *ngIf="ingredientList">
+    <li *ngFor="let ingredient of ingredientList; let i=index; trackBy:trackByFn">
+      <input type="text" name="{{ingredientList.indexOf(ingredient)}}" [(ngModel)]="ingredientList[i]">
+      <button (click)="removeIngredient(ingredientList.indexOf(ingredient))" type="button">X</button>
+    </li>
+    <button (click)="addIngredientInput()" type="button">Add Ingredient</button>
+  </ol>
 
   <div><p>ingredients: </p></div>
   <button mat-raised-button type="submit">Save</button>
 </form>
+</mat-dialog-content>
+
 
 
