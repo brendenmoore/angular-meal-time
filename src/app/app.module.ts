@@ -20,13 +20,14 @@ import { HeaderComponent } from './header/header.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule, MatButtonModule } from '@angular/material';
+import { MatNativeDateModule, MatButtonModule, MatInputModule } from '@angular/material';
 import { MatTableModule } from '@angular/material/table';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { NewRecipeComponent } from './new-recipe/new-recipe.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 @NgModule({
@@ -59,7 +60,9 @@ import { NewRecipeComponent } from './new-recipe/new-recipe.component';
     MatListModule,
     MatDialogModule,
     MatPaginatorModule,
-    MatButtonModule
+    MatButtonModule,
+    MatInputModule,
+    MatFormFieldModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

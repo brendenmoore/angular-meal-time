@@ -1,0 +1,7 @@
+.new-recipe-form, p, input, mat-form-field {
+  min-width: 350px;
+}
+h1 {
+  padding-bottom: 2em;
+  text-align: center;
+}

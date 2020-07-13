@@ -1,14 +1,41 @@
 <h1>New Recipe</h1>
 
-<form #newRecipeForm="ngForm" class="table" (ngSubmit)="onSave(newRecipeForm)" novalidate>
-  <p>name: </p><input name="name" ngModel type="text" >
-  <p>prep time: </p><input name="prepTime" ngModel type="text" >
-  <p>cook time: </p><input name="cookTime" ngModel type="text" >
-  <p>servings: </p><input name="servings" ngModel type="text" >
-  <p>directions: </p><input name="directions" ngModel type="text" >
-  <p>notes: </p><input name="notes" ngModel type="text" >
+<form #newRecipeForm="ngForm" class="new-recipe-form" (ngSubmit)="onSave(newRecipeForm)" novalidate>
+  <p>
+    <mat-form-field>
+      <input name="name" ngModel type="text" matInput placeholder="Recipe Name">
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field>
+      <input name="prepTime" ngModel type="text" matInput placeholder="Prep Time">
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field>
+      <input name="cookTime" ngModel type="text" matInput placeholder="Cook Time">
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field>
+      <input name="servings" ngModel type="text" matInput placeholder="Servings">
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field>
+      <textarea name="directions" ngModel matInput placeholder="Directions"></textarea>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field>
+      <textarea name="notes" ngModel matInput placeholder="Notes"></textarea>
+    </mat-form-field>
+  </p>
+
+
+
   <div><p>ingredients: </p></div>
-  <button type="submit">Save</button>
+  <button mat-raised-button type="submit">Save</button>
 </form>
 
 
