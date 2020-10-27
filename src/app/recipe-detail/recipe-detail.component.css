@@ -4,11 +4,31 @@
 
 .table {
   width: 30%;
-  display: inline-grid;
-  grid-template-columns: 1fr 3fr;
+  /* display: inline-grid; */
+  /* grid-template-columns: 1fr 3fr; */
   min-width: 280px;
 }
 
+.recipe-prop {
+  display: flex;
+}
+
+.property {
+  margin-left: 10px;
+}
+
+#editBtns {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  margin-top: 10px;
+  display: flex;
+}
+
+button {
+  margin: 3px;  
+}
+
+/* 
 button {
   height: fit-content;
   padding: 3px;
@@ -16,24 +36,19 @@ button {
   font-size: 11pt;
   border: 0;
   background-color: white;
-}
+} */
 
-button:hover {
-  border: 1px solid rgba(0, 0, 0, 0.445);
-  border-radius: 3px;
-}
-
-#editBtns {
+/* #editBtns {
   margin: 10px;
   border-top: 1px solid rgba(0, 0, 0, 0.445);
   grid-column-start: 1;
   grid-column-end: 3;
-}
+} */
 
-#editBtns button {
+/* #editBtns button {
   margin-top: 10px;
   width: 50%;
-}
+} */
 
 input {
   padding: 3px;

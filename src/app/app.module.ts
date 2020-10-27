@@ -26,10 +26,12 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatButtonModule } from '@angular/material/button';
+import { NewRecipeComponent } from './new-recipe/new-recipe.component'
 
 
 @NgModule({
-  declarations: [AppComponent, RecipeListComponent, RecipeDetailComponent, MenuComponent, ShoppingListComponent, ClickStopPropagationDirective, DayMenuComponent, HeaderComponent],
+  declarations: [AppComponent, RecipeListComponent, RecipeDetailComponent, MenuComponent, ShoppingListComponent, ClickStopPropagationDirective, DayMenuComponent, HeaderComponent, NewRecipeComponent],
   imports: [
     BrowserModule,
     AppRoutingModule, 
@@ -57,10 +59,11 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatDividerModule,
     MatListModule,
     MatDialogModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [RecipeListComponent]
+  entryComponents: [RecipeListComponent, NewRecipeComponent]
 })
 export class AppModule {}

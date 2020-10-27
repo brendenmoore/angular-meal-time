@@ -1,47 +1,46 @@
 <div *ngIf="recipeObs | async as recipe" class="details">
   
   <div *ngIf="!isEdit; else edit" class="table">
-    <p *ngIf="recipe.name">Name: </p><p *ngIf="recipe.name">{{recipe.name}}</p>
-    <p *ngIf="recipe.prepTime">Prep Time: </p><p *ngIf="recipe.prepTime">{{recipe.prepTime}}</p>
-    <p *ngIf="recipe.cookTime">Cook Time: </p><p *ngIf="recipe.cookTime">{{recipe.cookTime}}</p>
-    <p *ngIf="recipe.servings">Servings: </p><p *ngIf="recipe.servings">{{recipe.servings}}</p>
-    <p *ngIf="recipe.directions">Directions: </p><p *ngIf="recipe.directions">{{recipe.directions}}</p>
-    <p *ngIf="recipe.notes">Notes: </p><p *ngIf="recipe.notes">{{recipe.notes}}</p>
-    <p *ngIf="recipe.ingredients">Ingredients: </p> 
+    <div class="recipe-prop"><p *ngIf="recipe.name">Name: </p><p class="property" *ngIf="recipe.name">{{recipe.name}}</p></div>
+    <div class="recipe-prop"><p *ngIf="recipe.prepTime">Prep Time: </p><p class="property" *ngIf="recipe.prepTime">{{recipe.prepTime}}</p></div>
+    <div class="recipe-prop"><p *ngIf="recipe.cookTime">Cook Time: </p><p class="property" *ngIf="recipe.cookTime">{{recipe.cookTime}}</p></div>
+    <div class="recipe-prop"><p *ngIf="recipe.servings">Servings: </p><p class="property" *ngIf="recipe.servings">{{recipe.servings}}</p></div>
+    <div class="recipe-prop"><p *ngIf="recipe.directions">Directions: </p><p class="property" *ngIf="recipe.directions">{{recipe.directions}}</p></div>
+    <div class="recipe-prop"><p *ngIf="recipe.notes">Notes: </p><p class="property" *ngIf="recipe.notes">{{recipe.notes}}</p></div>
+    <p *ngIf="recipe.ingredients">Ingredients: </p>
     <ol *ngIf="recipe.ingredients">
       <li *ngFor="let ingredient of recipe.ingredients; let i=index">&emsp;{{i+1}}. {{ingredient}}</li>
     </ol>
     <div id="editBtns">
       <input [(ngModel)]='dateSelectedForMenu' matInput (dateInput)="addToMenu($event.value.getTime())" [matDatepicker]="picker" style="width:0;margin:0;padding:0;border:0;">
       <mat-datepicker #picker></mat-datepicker>
-      <button (click)="isEdit = true" type="button">Edit</button>
-      <button  (click)="onDateSelected()">Add To Menu</button>
+      <button (click)="isEdit = true" type="button" mat-stroked-button>Edit</button>
+      <button  (click)="onDateSelected()" mat-stroked-button>Add To Menu</button>
     </div>
   </div>
 
   <ng-template #edit>
     <form #editRecipeForm="ngForm" class="table" (ngSubmit)="processForm(editRecipeForm)" novalidate>
-      <p>name: </p><input name="name" ngModel type="text" [(ngModel)]="recipe.name">
-      <p>prep time: </p><input name="prepTime" ngModel type="text" [(ngModel)]="recipe.prepTime">
-      <p>cook time: </p><input name="cookTime" ngModel type="text" [(ngModel)]="recipe.cookTime">
-      <p>servings: </p><input name="servings" ngModel type="text" [(ngModel)]="recipe.servings">
-      <p>directions: </p><input name="directions" ngModel type="text" [(ngModel)]="recipe.directions">
-      <p>notes: </p><input name="notes" ngModel type="text" [(ngModel)]="recipe.notes">
+      <div class="recipe-prop"><p>name: </p><input name="name" ngModel type="text" [(ngModel)]="recipe.name"></div>
+      <div class="recipe-prop"><p>prep time: </p><input name="prepTime" ngModel type="text" [(ngModel)]="recipe.prepTime"></div>
+      <div class="recipe-prop"><p>cook time: </p><input name="cookTime" ngModel type="text" [(ngModel)]="recipe.cookTime"></div>
+      <div class="recipe-prop"><p>servings: </p><input name="servings" ngModel type="text" [(ngModel)]="recipe.servings"></div>
+      <div class="recipe-prop"><p>directions: </p><input name="directions" ngModel type="text" [(ngModel)]="recipe.directions"></div>
+      <div class="recipe-prop"><p>notes: </p><input name="notes" ngModel type="text" [(ngModel)]="recipe.notes"></div>
       <div><p>ingredients: </p></div>
       <ol *ngIf="ingredientList">
         <li *ngFor="let ingredient of ingredientList; let i=index; trackBy:trackByFn">
           <input type="text" name="{{ingredientList.indexOf(ingredient)}}" [(ngModel)]="ingredientList[i]">
-          <button (click)="removeIngredient(ingredientList.indexOf(ingredient))" type="button">X</button>
+          <button (click)="removeIngredient(ingredientList.indexOf(ingredient))" type="button" mat-stroked-button>X</button>
         </li>
-        <button (click)="addIngredientInput()" type="button">Add Ingredient</button>
+        <button (click)="addIngredientInput()" type="button" mat-stroked-button>Add Ingredient</button>
       </ol>
       <div id="editBtns">
-        <button *ngIf="isEdit" type="submit">Save</button>
-        <button (click)="deleteRecipe()">Delete Recipe</button>
+        <button *ngIf="isEdit" type="submit" mat-stroked-button>Save</button>
+        <button (click)="deleteRecipe()" mat-stroked-button>Delete Recipe</button>
       </div>
     </form>
   </ng-template>
-    
 </div>
 
 
