@@ -37,7 +37,6 @@ export function getWeek(weeksFromNow: number = 0): Array<number> {
     currentDate.setDate(currentDate.getDate() + 1);
     days.push(currentDate.getTime());
   }
-  console.log(days);
   return days;
 }
 

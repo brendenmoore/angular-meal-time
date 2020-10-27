@@ -1,0 +1,21 @@
+<div *ngIf="newRecipe">
+  <form #editRecipeForm="ngForm" class="table" (ngSubmit)="processForm(editRecipeForm)" novalidate>
+    <p>name: </p><input name="name" ngModel type="text" [(ngModel)]="newRecipe.name">
+    <p>prep time: </p><input name="prepTime" ngModel type="text" [(ngModel)]="newRecipe.prepTime">
+    <p>cook time: </p><input name="cookTime" ngModel type="text" [(ngModel)]="newRecipe.cookTime">
+    <p>servings: </p><input name="servings" ngModel type="text" [(ngModel)]="newRecipe.servings">
+    <p>directions: </p><input name="directions" ngModel type="text" [(ngModel)]="newRecipe.directions">
+    <p>notes: </p><input name="notes" ngModel type="text" [(ngModel)]="newRecipe.notes">
+    <div><p>ingredients: </p></div>
+    <ol>
+      <li *ngFor="let ingredient of newRecipe.ingredients; let i=index; trackBy:trackByFn">
+        <input type="text" name="{{i}}" [(ngModel)]="newRecipe.ingredients[i]">
+        <button (click)="logging(i)" type="button">X</button>
+      </li>
+      <button (click)="newRecipe.ingredients.push('')" type="button">Add Ingredient</button>
+    </ol>
+    <div id="editBtns">
+      <button type="submit" mat-dialog-close>Save</button>
+    </div>
+  </form>
+</div>

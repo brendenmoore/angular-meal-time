@@ -71,9 +71,6 @@ export class RecipeDetailComponent implements OnChanges {
     } else {
       this.ingredientList = [];
     }
-    if (this.recipe.name === 'New Recipe') {
-      this.isEdit = true;
-    }
   }
   
 }

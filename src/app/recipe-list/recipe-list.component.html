@@ -3,11 +3,11 @@
 
     <div id="searchDiv">
       <input type="text" placeholder="search" #searchInput (keyup)="search(searchInput.value)">
-      <button id="addBtn" (click)="newRecipe()">New Recipe</button>
+      <button (click)="newRecipe()" mat-stroked-button>New Recipe</button>
     </div>
 
     <mat-accordion>
-      <mat-expansion-panel multi="false" *ngFor="let recipe of recipeListToDisplay" [expanded]="recipe.name === newRecipeString">
+      <mat-expansion-panel multi="false" *ngFor="let recipe of recipeListToDisplay">
         <mat-expansion-panel-header>
           <mat-panel-title>
             {{ recipe.name }}

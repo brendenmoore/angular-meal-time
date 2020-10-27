@@ -2,6 +2,8 @@ import { Component, Output, EventEmitter, Input } from "@angular/core";
 import { Recipe} from "../interfaces";
 import { DatabaseService } from '../database.service'
 import { Observable } from 'rxjs';
+import { MatDialog } from '@angular/material';
+import { NewRecipeComponent } from '../new-recipe/new-recipe.component';
 
 @Component({
   selector: "app-recipe-list",
@@ -15,16 +17,14 @@ export class RecipeListComponent {
   recipeList: Observable<Recipe[]>;
   recipeListToDisplay: Array<Recipe>;
   selectedTimestamp: number = null;
-  newRecipeString: string = 'New Recipe';
 
-  constructor(private dbService: DatabaseService) {
+  constructor(private dbService: DatabaseService, private dialog: MatDialog) {
     this.recipeList = this.dbService.getRecipeList().valueChanges();
     this.recipeList.subscribe(recipes => this.recipeListToDisplay = recipes);
   }
 
   newRecipe() {
-    let recipe: Recipe = new Recipe(this.newRecipeString);
-    this.dbService.addRecipe(recipe);
+    const dialogRef = this.dialog.open(NewRecipeComponent);
   }
 
   search(searchTerm: string): void {
