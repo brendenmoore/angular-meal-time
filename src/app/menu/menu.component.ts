@@ -40,7 +40,12 @@ export class MenuComponent implements OnInit {
   }
 
   openRecipeSelect(timestamp: number) {
-    const dialogRef = this.dialog.open(RecipeListComponent);
+    let dialogSettings = {
+      padding: 'auto 0',
+      minWidth: '350px',
+      panelClass: 'custom-dialog-container'
+    }
+    const dialogRef = this.dialog.open(RecipeListComponent, dialogSettings);
     let instance = dialogRef.componentInstance;
     instance.selectedTimestamp = timestamp;
   }

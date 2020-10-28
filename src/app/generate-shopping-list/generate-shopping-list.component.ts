@@ -52,8 +52,6 @@ export class GenerateShoppingListComponent implements OnInit {
       counter[ing.name] = counter[ing.name] ? counter[ing.name]+1 : 1;
     })
     let groupedIngredients: Array<Ingredient> = []
-    console.log(ingredients)
-    console.log(counter)
     for (const [key, value] of Object.entries(counter)) {
       groupedIngredients.push({name: `${key} x${value}`, isChecked: false})
     }

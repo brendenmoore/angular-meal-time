@@ -7,5 +7,12 @@
     </mat-tab-group>
 </div>
 
+<div class="login-container" *ngIf="!(user.uidObs | async)">
+    <button class="login-btn" mat-stroked-button (click)="user.login()">
+        <mat-icon>login</mat-icon>
+        <span>login</span>
+    </button>
+</div>
+
 
 
