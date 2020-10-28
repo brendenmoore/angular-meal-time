@@ -21,13 +21,15 @@ export function getNextNumberOfDays(calendarPage: number = 0, daysPerPage: numbe
   }
 }
 
+
 // for showing a standard week starting on sunday or monday
 export function getWeek(weeksFromNow: number = 0): Array<number> {
   let startOnSunday = true;
   let days: Array<number> = []
   let currentDate = new Date();
   // go to desired week
-  currentDate.setDate(weeksFromNow * 7);
+  currentDate.setDate(currentDate.getDate() + weeksFromNow*7)
+
   // gets start of current week
   let diff = currentDate.getDate() - currentDate.getDay() + (currentDate.getDay() === 0 ? -6 : 1);
   currentDate.setDate(diff - (startOnSunday ? 1 : 0));
