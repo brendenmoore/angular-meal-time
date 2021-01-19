@@ -28,10 +28,16 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatButtonModule } from '@angular/material/button';
 import { NewRecipeComponent } from './new-recipe/new-recipe.component'
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import { GenerateShoppingListComponent } from './generate-shopping-list/generate-shopping-list.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+
 
 
 @NgModule({
-  declarations: [AppComponent, RecipeListComponent, RecipeDetailComponent, MenuComponent, ShoppingListComponent, ClickStopPropagationDirective, DayMenuComponent, HeaderComponent, NewRecipeComponent],
+  declarations: [AppComponent, RecipeListComponent, RecipeDetailComponent, MenuComponent, ShoppingListComponent, ClickStopPropagationDirective, DayMenuComponent, HeaderComponent, NewRecipeComponent, GenerateShoppingListComponent],
   imports: [
     BrowserModule,
     AppRoutingModule, 
@@ -60,10 +66,14 @@ import { NewRecipeComponent } from './new-recipe/new-recipe.component'
     MatListModule,
     MatDialogModule,
     MatPaginatorModule,
-    MatButtonModule
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCardModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [RecipeListComponent, NewRecipeComponent]
+  entryComponents: [RecipeListComponent, NewRecipeComponent, GenerateShoppingListComponent]
 })
 export class AppModule {}

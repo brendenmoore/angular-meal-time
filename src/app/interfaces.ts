@@ -53,3 +53,10 @@ export interface Label {
     color: string
 }
 
+export interface ShoppingList {
+    createdOn: string;
+    startDate: string,
+    endDate: string,
+    ingredients: Array<Ingredient>,
+}
+

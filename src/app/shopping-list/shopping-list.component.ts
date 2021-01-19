@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { DatabaseService } from '../database.service';
-import { MenuItem, Ingredient } from "../interfaces";
+import { MenuItem, Ingredient, ShoppingList } from "../interfaces";
 import { Observable } from 'rxjs';
 import { getNextNumberOfDays, formatDate } from '../export-functions';
+import { MatDialog } from '@angular/material';
+import { GenerateShoppingListComponent } from '../generate-shopping-list/generate-shopping-list.component';
 
 @Component({
   selector: 'app-shopping-list',
@@ -11,64 +13,22 @@ import { getNextNumberOfDays, formatDate } from '../export-functions';
 })
 export class ShoppingListComponent {
 
-  ingredientRefMap = new Map();
-  shoppingListMap = new Map();
-  timestampArr: Array<number> = [];
-  observableArr: Array<Observable<MenuItem[]>> = [];
+  shoppingList: Observable<ShoppingList>;
+  shoppingListToDisplay: ShoppingList;
 
-  constructor(private dbService: DatabaseService) {
-    this.initiateDays();
-    setTimeout(() => {
-      this.initiateObservables();
-      this.constructShoppingList();
-    }, 100);
+  constructor(private dbService: DatabaseService, private dialog: MatDialog) {
+    this.shoppingList = this.dbService.shoppingList.valueChanges();
+    this.shoppingList.subscribe(list => {
+      this.shoppingListToDisplay = list
+    });
   }
 
-  initiateDays(weeksFromNow: number = 0) {
-    this.timestampArr = getNextNumberOfDays(weeksFromNow);
+  openGenerateShoppingList() {
+    this.dialog.open(GenerateShoppingListComponent);
   }
 
-  initiateObservables() {
-    for (let i = 0; i < this.timestampArr.length; i++) {
-      let day = formatDate(this.timestampArr[i]);
-      this.observableArr.push(this.dbService.getMenuDay(day).valueChanges());
-    }
-  }
-
-  onChecked(ingredientRefKey) {
-    this.ingredientRefMap.get(ingredientRefKey).val.forEach(ref => {
-      let ingredients = ref.menuItem.ingredients;
-      this.dbService.changeIngredientChecked(ingredients.indexOf(ref.ingredient), ref.menuItem);
-    })
-  }
-
-  constructShoppingList() {
-    for (let observable of this.observableArr) {
-      let ob = observable.subscribe(menuItems => {
-        menuItems.forEach(menuItem => {
-          if (menuItem.ingredients) {
-            menuItem.ingredients.forEach(ing => {
-              this.incrementIngredientCount(ing)
-              this.constructReferenceMap(menuItem, ing);
-            });
-          }
-        })
-        ob.unsubscribe();
-      })
-    }
-  }
-
-  incrementIngredientCount(ingredient: Ingredient) {
-    this.shoppingListMap.has(ingredient.name) ? this.shoppingListMap.get(ingredient.name).val++ : this.shoppingListMap.set(ingredient.name, { val: 1 });
-  }
-
-  constructReferenceMap(menuItem: MenuItem, ingredient: Ingredient) {
-    let ingredientRef = { menuItem: menuItem, ingredient: ingredient };
-    if (this.ingredientRefMap.has(ingredient.name)) {
-      this.ingredientRefMap.get(ingredient.name).val.push(ingredientRef);
-    } else {
-      this.ingredientRefMap.set(ingredient.name, { val: [ingredientRef] });
-    }
+  showOptions(event, ingIndex) {
+    this.dbService.toggleIngredient(ingIndex, event.checked);
   }
 
 }

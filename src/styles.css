@@ -138,3 +138,16 @@ table {
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.small-input > .mat-form-field-wrapper {
+  padding-bottom: 0 !important;
+}
+
+.small-input .mat-form-field-wrapper .mat-form-field-flex .mat-form-field-infix {
+  padding-top: 5px !important;
+  padding-bottom: 7px !important;
+}
+
+.small-input .mat-form-field-wrapper .mat-form-field-flex .mat-form-field-infix .mat-form-field-label {
+  font-size: 12px;
+}

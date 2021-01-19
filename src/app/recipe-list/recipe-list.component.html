@@ -2,8 +2,13 @@
   <div class="list">
 
     <div id="searchDiv">
-      <input type="text" placeholder="search" #searchInput (keyup)="search(searchInput.value)">
-      <button (click)="newRecipe()" mat-stroked-button>New Recipe</button>
+        <mat-form-field class="small-input" appearance="outline">
+          <mat-label>Search</mat-label>
+          <input type="text" (keyup)="search(searchInput.value)" matInput>
+        </mat-form-field>
+      <div class="new-recpie-container">
+        <button (click)="newRecipe()" mat-stroked-button>New Recipe</button>
+      </div>
     </div>
 
     <mat-accordion>

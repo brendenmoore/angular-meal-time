@@ -7,8 +7,10 @@
     <button (click)="goToNextWeek()">
       <mat-icon>keyboard_arrow_right</mat-icon>
     </button>
-    <span>Days to Display: </span>
-    <input [(ngModel)]="daysToDisplay" (keyup.enter)="initiateDays()" type="number">
+    <mat-form-field class="small-input" appearance="outline">
+      <mat-label>Days to Display</mat-label>
+      <input [(ngModel)]="daysToDisplay" (keyup.enter)="initiateDays()" type="number" matInput>
+    </mat-form-field>
   </div>
 
   <mat-table [dataSource]="dayStringArr" class="mat-elevation-z8">

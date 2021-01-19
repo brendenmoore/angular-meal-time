@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from "angularfire2/database"; 
 import { UserService } from './user.service';
-import { User, Recipe, MenuItem} from './interfaces'
+import { User, Recipe, MenuItem, ShoppingList} from './interfaces'
 import { formatDate } from './export-functions'
 
 
@@ -14,11 +14,13 @@ export class DatabaseService{
   users: AngularFireList<User> = null
   recipes: AngularFireList<Recipe> = null;
   menu: AngularFireList<MenuItem> = null
+  shoppingList: AngularFireObject<ShoppingList> = null
 
   constructor(private db: AngularFireDatabase, private user: UserService) {
     this.userId = this.user.uid;
     this.recipes = this.db.list(`recipes/${this.userId}`);
     this.menu = this.db.list(`menu/${this.userId}`);
+    this.shoppingList = this.db.object(`shoppingList/${this.userId}`);
   }
 
   //
@@ -103,12 +105,16 @@ export class DatabaseService{
   //
   //ShoppingList data
   //
-  changeIngredientChecked(ingredientIndex: number, menuItem: MenuItem): void {
-    let ob = this.db.object(`menu/${this.userId}/${menuItem.date}/${menuItem.index}/ingredients/${ingredientIndex}/isChecked`).valueChanges().subscribe(val => {
-      let bool:boolean = !(val)
-      this.db.object(`menu/${this.userId}/${menuItem.date}/${menuItem.index}/ingredients/${ingredientIndex}`).update({isChecked: bool});
-      ob.unsubscribe();
-    })
+  getShoppingList() {
+    return this.shoppingList;
+  }
+
+  setShoppingList(shoppingList: ShoppingList) {
+    this.db.object(`shoppingList/${this.userId}`).set(shoppingList)
+  }
+
+  toggleIngredient(ingredientIndex: number, checked: boolean)  {
+    this.db.object(`shoppingList/${this.userId}/ingredients/${ingredientIndex}`).update({isChecked: checked})
   }
 
 }

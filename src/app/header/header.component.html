@@ -1,24 +1,26 @@
 <div id="wrapper">
-  <img src="assets/Meal-Time.png">
+  <div class="logo-container">
+    <img class="logo" src="../../assets/MealTimeLogo.svg">
+    <h1 class="logo-text">Meal Time</h1>
+  </div>
   <div>
     
-    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-      <mat-icon>more_vert</mat-icon>
+  <button class="white-btn" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+
+  <mat-menu #menu="matMenu">
+    <button *ngIf="user.uidObs | async as uid; else login" mat-menu-item (click)="user.logout()">
+      <mat-icon>logout</mat-icon>
+      <span>logout</span>
     </button>
-
-    <mat-menu #menu="matMenu" >
-      <button *ngIf="user.uidObs | async as uid; else login" mat-menu-item (click)="user.logout()">
-        <mat-icon>logout</mat-icon>
-        <span>logout</span>
+    <ng-template #login>
+      <button #login mat-menu-item (click)="user.login()">
+        <mat-icon>login</mat-icon>
+        <span>login</span>
       </button>
-
-      <ng-template #login>
-        <button #login mat-menu-item (click)="user.login()">
-          <mat-icon>login</mat-icon>
-          <span>login</span>
-        </button>
-      </ng-template>
-    </mat-menu>
+    </ng-template>
+  </mat-menu>
 
   </div>
 </div>

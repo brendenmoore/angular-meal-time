@@ -10,6 +10,7 @@ import { map } from 'rxjs/operators';
 export class UserService {
 
   uidObs = this.afAuth.authState.pipe(map(authState => {
+    console.log(!authState)
     if (!authState) {
       return null;
     } else {
