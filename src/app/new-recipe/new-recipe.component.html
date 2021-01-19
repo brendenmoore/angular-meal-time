@@ -10,7 +10,7 @@
     <ol>
       <li *ngFor="let ingredient of newRecipe.ingredients; let i=index; trackBy:trackByFn">
         <input type="text" name="{{i}}" [(ngModel)]="newRecipe.ingredients[i]">
-        <button (click)="logging(i)" type="button">X</button>
+        <button (click)="removeIngredient(i)" type="button">X</button>
       </li>
       <button (click)="newRecipe.ingredients.push('')" type="button">Add Ingredient</button>
     </ol>

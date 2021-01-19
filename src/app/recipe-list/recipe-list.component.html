@@ -4,7 +4,7 @@
     <div id="searchDiv">
         <mat-form-field class="small-input" appearance="outline">
           <mat-label>Search</mat-label>
-          <input type="text" (keyup)="search(searchInput.value)" matInput>
+          <input #searchInput type="text" (keyup)="search(searchInput.value)" matInput>
         </mat-form-field>
       <div class="new-recpie-container">
         <button (click)="newRecipe()" mat-stroked-button>New Recipe</button>

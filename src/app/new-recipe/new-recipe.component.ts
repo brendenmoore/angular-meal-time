@@ -34,5 +34,9 @@ export class NewRecipeComponent implements OnInit {
   trackByFn(index: any, item: any): number {
     return index;
   }
+
+  removeIngredient(index: number): void {
+    this.newRecipe.ingredients.splice(index, 1)
+  }
 }
 
