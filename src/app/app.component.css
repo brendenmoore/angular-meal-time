@@ -13,5 +13,11 @@
 }
 
 .photo {
-  margin-top: -100px;
+  margin-top: -90px;
+}
+
+@media only screen and (max-width: 768px) {
+  .photo {
+      margin-top: 0;
+  }
 }

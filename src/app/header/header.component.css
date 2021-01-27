@@ -1,9 +1,11 @@
 
 .btn {
+    margin-left: 12px;
     margin-right: 10px;
-    margin-bottom: 4px;
+    margin-top: -4px;
     border: 2px solid white;
     border-radius: 10px;
+    width: 75px;
     text-shadow: 0px 0px 10px #0000009a;
     -webkit-box-shadow: 0px 0px 10px 0px #00000036;
     box-shadow: 0px 0px 10px 0px #00000036;
@@ -15,11 +17,10 @@
 
 .logo-text {
     color: white;
-    font-size: 45px;
+    font-size: 35px !important;
     font-family: 'Lobster Two', cursive;
     text-shadow: 0px 0px 10px #0000008f;
     -webkit-text-stroke: 1px rgba(0, 0, 0, 0.095);
-
 }
 
 .logo-container {
@@ -27,18 +28,29 @@
     align-items: center;
 }
 
-.navbar {
-    padding: 0;
-}
-
-.navbar a {
-    color: white;
+.nav-link {
+    margin-left: 12px;
     font-size: 16px;
-    margin-right: 20px;
-    text-shadow: 0px 0px 10px #0000008f;
+    text-shadow: 0px 0px 10px #00000071;
     /* -webkit-text-stroke: 1px rgba(0, 0, 0, 0.095); */
 }
 
-.navbar-links {
+.navbar {
+    padding: 0;
     font-family: 'Comfortaa', cursive;
+}
+
+.navbar a {
+    color:#ffffff;
+}
+
+@media only screen and (max-width: 768px) {
+
+    .btn {
+        margin-top: 5px;
+    }
+
+    .nav-link {
+        padding: 4px
+    }
 }

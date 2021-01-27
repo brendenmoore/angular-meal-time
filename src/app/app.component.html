@@ -17,14 +17,6 @@
             <img src="../assets/photo5.png" class="photo d-block w-100" alt="...">
         </div>
     </div>
-    <a class="carousel-control-prev" href="#photos-carousel" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#photos-carousel" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
 </div>
 <div *ngIf="user.uidObs | async">
     <mat-tab-group dynamicHeight mat-align-tabs="center">
@@ -41,9 +33,6 @@
 </div>
 
 <div class="login-container" *ngIf="!(user.uidObs | async)">
-
-
-
     <button class="login-btn" mat-stroked-button (click)="user.login()">
         <mat-icon>login</mat-icon>
         <span>login</span>
