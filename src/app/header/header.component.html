@@ -1,26 +1,7 @@
-<div id="wrapper">
-  <div class="logo-container">
-    <img class="logo" src="../../assets/MealTimeLogo.svg">
-    <h1 class="logo-text">Meal Time</h1>
+<nav class="navbar navbar-dark navbar-expand-md">
+  <div class="navbar-brand logo-container">
+    <img class="logo" src="../../assets/MealTimeLogoV2.svg">
+    <h1 class="logo-text">MealTime</h1>
   </div>
-  <div>
-    
-  <button class="white-btn" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-    <mat-icon>more_vert</mat-icon>
-  </button>
-
-  <mat-menu #menu="matMenu">
-    <button *ngIf="user.uidObs | async as uid; else login" mat-menu-item (click)="user.logout()">
-      <mat-icon>logout</mat-icon>
-      <span>logout</span>
-    </button>
-    <ng-template #login>
-      <button #login mat-menu-item (click)="user.login()">
-        <mat-icon>login</mat-icon>
-        <span>login</span>
-      </button>
-    </ng-template>
-  </mat-menu>
-
-  </div>
-</div>
+  <button class="btn btn-outline-light ml-auto" (click)="user.login()">sign in</button>
+</nav>

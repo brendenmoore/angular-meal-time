@@ -1,16 +1,21 @@
-#wrapper {
-    background-color: #3f51b5;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+
+
+.btn {
+    margin-right: 15px;
+    border: 2px solid white;
+    border-radius: 10px;
+    font-family: 'Comfortaa', cursive;
 }
 
 .logo {
-    height: 60px;
+    height: 55px;
+    padding: 5px;
 }
 
-.white-btn {
+.logo-text {
     color: white;
+    font-size: 40px;
+    font-family: 'Lobster Two', cursive;
 }
 
 .logo-container {
@@ -18,8 +23,7 @@
     align-items: center;
 }
 
-.logo-text {
-    color: white;
-    font-size: 20px;
-    font-weight: 500;
+.navbar {
+    padding: 0;
+    background-color: #3f51b5;
 }
