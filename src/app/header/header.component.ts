@@ -23,4 +23,10 @@ export class HeaderComponent {
     }
   }
 
+  // Allows scrolling to each section
+  scrollToElement(section) {
+    const element = document.querySelector(section)
+    element ? element.scrollIntoView({behavior: "smooth"}): null;
+  }
+
 }
