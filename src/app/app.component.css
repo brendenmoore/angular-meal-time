@@ -20,20 +20,23 @@
   transform: translate(-50%, -50%);
 } */
 
-.about-container {
-  margin: 50px 0;
+.btn-primary {
+  background: radial-gradient(circle, rgba(41,80,235,1) 0%, rgba(67,60,189,1) 100%);
+  padding: 8px 25px;
+  margin: 30px;
+  border: none;
+  border-radius: 20px;
+  text-shadow: 0px 0px 10px #040735a8;
+  -webkit-box-shadow: 0px 0px 10px 0px #00053136;
+  box-shadow: 0px 0px 10px 0px #00053136;
 }
 
-.about-content {
+.content {
   font-family: 'Open Sans', sans-serif;
 }
 
-.about-title {
-  font-size: 2em;
-  font-weight: 600;
-  margin-bottom: 20px;
-  color: rgb(58, 81, 185);
-  text-shadow: 0px 0px 10px #0407351e;
+.content-container {
+  margin: 50px 0;
 }
 
 .features {
@@ -59,7 +62,7 @@
 }
 
 .how-to-container {
-  background: rgb(219, 227, 255);
+  background: rgb(226, 232, 255);
   border-radius: 20px;
   margin: 100px auto 0 auto;
   width: 90%;
@@ -83,22 +86,86 @@
   margin-top: -90px;
 }
 
+.titles {
+  font-size: 2em;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: rgb(58, 81, 185);
+  text-shadow: 0px 0px 10px #0407351e;
+}
+
+.titles::before {
+  content: '';
+  background: rgb(58, 81, 185);
+  height: 5px;
+  width: 200px;
+  margin: 0 auto;
+  display: block;
+  transform: translateY(46px);
+}
+
+.titles::after {
+  content: '';
+  background: rgb(58, 81, 185);
+  height: 10px;
+  width: 80px;
+  margin: 0 auto 40px auto;
+  display: block;
+  transform: translateY(5px);
+}
+
 .width-container {
   color: rgb(82, 82, 82);
   width: 80%;
   margin: 0 auto;
   text-align: center;
-  font-size: 18px;
+  font-size: 17px;
   font-family: 'Comfortaa', cursive;
 }
 
+@media only screen and (max-width: 1366px) {
+
+  .how-to-container {
+    margin-top: 70px;
+    width: 100%;
+  }
+
+  .width-container {
+    width: 95%;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+
+  .how-to-container {
+    margin-top: 70px;
+    width: 100%;
+  }
+
+  .width-container {
+    width: 95%;
+  }
+}
+
 @media only screen and (max-width: 768px) {
-  .about-container {
+  .content-container {
     margin: 50px 0;
   }
 
-  .about-title {
-    font-size: 1.8em;
+  .titles {
+    font-size: 1.5em;
+  }
+
+  .titles::before {
+    height: 3px;
+    width: 150px;
+    transform: translateY(33px);
+  }
+
+  .titles::after {
+    height: 6px;
+    width: 50px;
+    transform: translateY(3px);
   }
 
   .features {
