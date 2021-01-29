@@ -12,6 +12,7 @@ export class HeaderComponent {
 
   constructor(public user: UserService, @Inject(DOCUMENT) private document: Document) { }
 
+  // Allows the navbar to transition from transparent to blue on scroll
   @HostListener('window:scroll', [])
   onWindowScroll() {
     if (document.body.scrollTop > 150 ||

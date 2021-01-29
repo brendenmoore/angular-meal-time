@@ -1,21 +1,7 @@
+<!-- Dynamic header -->
 <app-header></app-header>
 
-<div *ngIf="user.uidObs | async">
-
-    <mat-tab-group dynamicHeight mat-align-tabs="center">
-        <mat-tab label="Recipes">
-            <app-recipe-list></app-recipe-list>
-        </mat-tab>
-        <mat-tab label="Menu">
-            <app-menu></app-menu>
-        </mat-tab>
-        <mat-tab label="Shopping">
-            <app-shopping-list></app-shopping-list>
-        </mat-tab>
-    </mat-tab-group>
-
-</div>
-
+<!-- Displayed when user is signed out -->
 <div class="login-container" *ngIf="!(user.uidObs | async)">
 
     <div id="photos-carousel" class="carousel slide carousel-fade" data-ride="carousel">
@@ -42,11 +28,6 @@
             </div>
         </div>
     </div>
-
-    <button class="login-btn" mat-stroked-button (click)="user.login()">
-        <mat-icon>login</mat-icon>
-        <span>login</span>
-    </button>
 
     <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim molestiae aspernatur fugit facere soluta est ipsa
         voluptatum error atque iure officia quae,
@@ -160,5 +141,22 @@
         Icons by <a href="https://www.flaticon.com/authors/wanicon" title="wanicon">wanicon</a>
         from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
     </div>
+
+</div>
+
+<!-- Displayed when user is signed in -->
+<div *ngIf="user.uidObs | async">
+
+    <mat-tab-group dynamicHeight mat-align-tabs="center">
+        <mat-tab label="Recipes">
+            <app-recipe-list></app-recipe-list>
+        </mat-tab>
+        <mat-tab label="Menu">
+            <app-menu></app-menu>
+        </mat-tab>
+        <mat-tab label="Shopping">
+            <app-shopping-list></app-shopping-list>
+        </mat-tab>
+    </mat-tab-group>
 
 </div>
