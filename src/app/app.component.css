@@ -66,6 +66,29 @@
   font-family: 'Open Sans', sans-serif;
 }
 
+.footer {
+  background-color: rgb(32, 56, 190);
+  height: 250px;
+}
+
+.footer-attribution {
+  color: rgb(179, 179, 179);
+  background-color: rgb(30, 52, 177);
+  height: 20px;
+  text-align: center;
+  font-size: 1rem;
+  padding-top: 2px;
+}
+
+.footer-attribution a {
+  color: rgb(255, 255, 255);
+}
+
+.footer-content {
+  text-align: center;
+  color: white;
+}
+
 .how-to-container {
   background: rgb(226, 232, 255);
   border-radius: 20px;
@@ -102,7 +125,7 @@
 }
 
 .try-container {
-  margin: 50px 0;
+  margin: 50px 0 0 0;
 }
 
 .width-container {
