@@ -2,12 +2,8 @@
 
 <!-- Displayed when user is signed out -->
 <div class="login-container" *ngIf="!(user.uidObs | async)">
-
     <div id="photos-carousel" class="carousel slide carousel-fade" data-ride="carousel">
         <div class="carousel-inner-container">
-            <!-- <div class="carousel-inner-text">
-                <p class="carousel-title">your meals, your way</p>
-            </div> -->
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <img src="../assets/photo1.png" class="photo d-block w-100" alt="Salad">
@@ -29,11 +25,10 @@
     </div>
 
     <div id="about" class="width-container">
-
         <div class="about-container">
             <p class="titles">Your Meals, Your Way!</p>
             <div class="content">Shopping and meal planning can be a weekly (or daily!) struggle,
-                but it doesn't have to be. That's why we made mealtime, a central location for all
+                but it doesn't have to be. That's why we made MealTime, a central location for all
                 your recipes and tasty meal plans. The best part is, when you're ready to head to
                 the store, you can turn your plan into a shopping list in a single click - no more
                 forgetting crucial ingredients!
@@ -54,7 +49,8 @@
                     <div class="col-md-4 features">
                         <img src="../assets/planMeals.png" class="features-icons" alt="Meals">
                         <h4>Plan Your Meals</h4>
-                        <p>Make your week easier by adding your favorite recipes to your personal menu and plan as many days ahead as you want. Easily see your meals on the go to keep
+                        <p>Make your week easier by adding your favorite recipes to your personal menu and plan as many
+                            days ahead as you want. Easily see your meals on the go to keep
                             track of what's coming up!
                         </p>
                     </div>
@@ -73,12 +69,10 @@
         <div id="try" class="try-container">
             <p class="titles">Meal Prep Your Way</p>
             <div class="content">Whether you're a meal-prep fanatic, a family needing some organization,
-                or just someone who doesn't want to have to keep running out to the grocery store, this
-                app can help! What are you waiting for, take a load off and try it out!
+                or just someone who doesn't want to have to keep running out to the grocery store, we can help! What are you waiting for, take a load off and try it out!
             </div>
             <button class="btn btn-primary" (click)="user.login()">Try It Out</button>
         </div>
-
     </div>
 
     <div class="footer">
@@ -87,23 +81,20 @@
             <img src="../assets/LogoFullSmall.png" alt="Logo">
             <p>Created By</p>
             <p>
-                <a href="https://github.com/brendenmoore">@brendenmoore</a> ,
-                <a href="https://github.com/Cbuzzard">@Cbuzzard</a>,
-                <a href="https://github.com/T-Mev">@T-Mev</a>
+                <a href="https://github.com/brendenmoore" target="_blank">@brendenmoore</a> ,
+                <a href="https://github.com/Cbuzzard" target="_blank">@Cbuzzard</a>,
+                <a href="https://github.com/T-Mev" target="_blank">@T-Mev</a>
             </p>
         </div>
     </div>
-
     <div class="footer-attribution">
         Icons by <a href="https://www.flaticon.com/authors/wanicon" title="wanicon">wanicon</a>
         from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
     </div>
-
 </div>
 
 <!-- Displayed when user is signed in -->
 <div *ngIf="user.uidObs | async">
-
     <mat-tab-group dynamicHeight mat-align-tabs="center">
         <mat-tab label="Recipes">
             <app-recipe-list></app-recipe-list>
@@ -115,5 +106,4 @@
             <app-shopping-list></app-shopping-list>
         </mat-tab>
     </mat-tab-group>
-
 </div>
