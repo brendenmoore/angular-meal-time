@@ -81,6 +81,7 @@
 
 .footer-content a {
   color: white;
+  padding-right: 5px;
 }
 
 .footer-content a:hover {
