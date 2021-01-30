@@ -20,8 +20,12 @@
   transform: translate(-50%, -50%);
 } */
 
+.about-container {
+  margin: 0px 0;
+}
+
 .btn-primary {
-  background: radial-gradient(circle, rgba(41,80,235,1) 0%, rgba(67,60,189,1) 100%);
+  background: radial-gradient(circle, rgb(40, 75, 214) 0%, rgb(75, 68, 212) 100%);
   padding: 8px 25px;
   margin: 30px;
   border: none;
@@ -31,12 +35,13 @@
   box-shadow: 0px 0px 10px 0px #00053136;
 }
 
-.content {
-  font-family: 'Open Sans', sans-serif;
+.btn-primary:hover {
+  background: radial-gradient(circle, rgb(34, 64, 182) 0%, rgb(60, 55, 170) 100%);
+
 }
 
-.content-container {
-  margin: 50px 0;
+.content {
+  font-family: 'Open Sans', sans-serif;
 }
 
 .features {
@@ -64,7 +69,7 @@
 .how-to-container {
   background: rgb(226, 232, 255);
   border-radius: 20px;
-  margin: 100px auto 0 auto;
+  margin: 50px auto 0 auto;
   width: 90%;
 }
 
@@ -87,31 +92,17 @@
 }
 
 .titles {
-  font-size: 2em;
+  font-size: 2.5em;
   font-weight: 600;
   margin-bottom: 20px;
   color: rgb(58, 81, 185);
-  text-shadow: 0px 0px 10px #0407351e;
+  text-shadow: 0px 0px 10px #04073515;
+  font-family: 'Lobster Two', cursive;
+  text-decoration: underline;
 }
 
-.titles::before {
-  content: '';
-  background: rgb(58, 81, 185);
-  height: 5px;
-  width: 200px;
-  margin: 0 auto;
-  display: block;
-  transform: translateY(46px);
-}
-
-.titles::after {
-  content: '';
-  background: rgb(58, 81, 185);
-  height: 10px;
-  width: 80px;
-  margin: 0 auto 40px auto;
-  display: block;
-  transform: translateY(5px);
+.try-container {
+  margin: 50px 0;
 }
 
 .width-container {
@@ -126,46 +117,34 @@
 @media only screen and (max-width: 1366px) {
 
   .how-to-container {
-    margin-top: 70px;
+    margin-top: 50px;
     width: 100%;
   }
 
   .width-container {
-    width: 95%;
+    width: 90%;
   }
 }
 
 @media only screen and (max-width: 1024px) {
 
   .how-to-container {
-    margin-top: 70px;
+    margin-top: 50px;
     width: 100%;
   }
 
   .width-container {
-    width: 95%;
+    width: 90%;
   }
 }
 
 @media only screen and (max-width: 768px) {
-  .content-container {
+  .about-container {
     margin: 50px 0;
   }
 
   .titles {
-    font-size: 1.5em;
-  }
-
-  .titles::before {
-    height: 3px;
-    width: 150px;
-    transform: translateY(33px);
-  }
-
-  .titles::after {
-    height: 6px;
-    width: 50px;
-    transform: translateY(3px);
+    font-size: 2em;
   }
 
   .features {
@@ -173,7 +152,7 @@
   }
 
   .how-to-container {
-    margin-top: 70px;
+    margin-top: 50px;
     width: 100%;
   }
 
@@ -188,6 +167,6 @@
 
 @media only screen and (max-width: 355px) {
   .photo {
-    height: 200px;
+    height: 180px;
   }
 }
