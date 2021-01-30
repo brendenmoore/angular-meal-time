@@ -42,6 +42,9 @@
 
 .content {
   font-family: 'Open Sans', sans-serif;
+  line-height: 1.5;
+  width: 80%;
+  margin: 0 auto;
 }
 
 .features {
@@ -64,6 +67,7 @@
 
 .features p {
   font-family: 'Open Sans', sans-serif;
+  line-height: 1.5;
 }
 
 .footer {
@@ -99,6 +103,10 @@
 
 .footer-content a {
   color: white;
+}
+
+.footer-content a:hover {
+  color: rgb(179, 179, 179);
 }
 
 .how-to-container {
@@ -165,6 +173,11 @@
 }
 
 @media only screen and (max-width: 1024px) {
+  .content {
+    width: 95%;
+    margin: 0 auto;
+  }
+
   .footer {
     height: 200px;
   }
@@ -182,6 +195,11 @@
 @media only screen and (max-width: 768px) {
   .about-container {
     margin: 20px 0;
+  }
+
+  .content {
+    width: 90%;
+    margin: 0 auto;
   }
 
   .footer {
