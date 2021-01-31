@@ -67,7 +67,8 @@
 }
 
 .navbar2 {
-    background: radial-gradient(circle, rgb(28, 55, 161) 0%, rgba(47,40,165,1) 100%);
+    /* Red Theme */
+    background: radial-gradient(circle, rgb(216, 52, 47) 0%,rgb(190, 43, 38) 100%);
 }
 
 .navbar-dark .navbar-toggler {
@@ -75,7 +76,9 @@
 }
 
 .navbar.scrolled {
-    background-color: rgb(32, 56, 190);
+    /* Red Theme */
+    background-color: rgb(190, 43, 38);
+
     transition: background 900ms;
 }
 
