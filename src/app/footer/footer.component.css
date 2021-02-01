@@ -1,0 +1,65 @@
+.footer {
+    /* Red Theme */
+    background-color: rgb(190, 43, 38);
+
+    height: 250px;
+  }
+
+  .footer-attribution {
+    /* Red Theme */
+    background-color: rgb(182, 40, 35);
+
+    color: rgb(238, 196, 196);
+    font-family: 'Open Sans', sans-serif;
+    height: 20px;
+    text-align: center;
+    font-size: 1rem;
+    padding-top: 2px;
+  }
+
+  .footer-attribution a {
+    color: rgb(255, 255, 255);
+  }
+
+  .footer-attribution a:hover {
+    color: rgb(238, 196, 196);
+  }
+
+  .footer-content {
+    color: rgb(255, 255, 255);
+    text-align: center;
+    margin-top: 10px;
+    font-family: 'Comfortaa', cursive;
+  }
+
+  .footer-content p {
+    padding: 5px;
+    color: rgb(238, 196, 196);
+  }
+
+  .footer-content a {
+    color: white;
+    padding-right: 5px;
+  }
+
+  .footer-content a:hover {
+    color: rgb(238, 196, 196);
+  }
+
+  @media only screen and (max-width: 1366px) {
+    .footer {
+      height: 215px;
+    }
+  }
+
+  @media only screen and (max-width: 1024px) {
+    .footer {
+      height: 200px;
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    .footer {
+      height: 180px;
+    }
+  }

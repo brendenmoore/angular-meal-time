@@ -4,7 +4,7 @@
 
 .btn-primary {
   /* Red Theme */
-  background: radial-gradient(circle, rgb(255, 89, 83) 0%, rgb(199, 60, 56) 100%);
+  background: rgb(214, 56, 51);
 
   color: white;
   padding: 8px 25px;
@@ -15,7 +15,7 @@
 
 .btn-primary:hover {
   /* Red Theme */
-  background: radial-gradient(circle, rgb(255, 92, 86) 0%, rgb(255, 58, 51) 100%);
+  background: rgb(236, 78, 73);
 }
 
 .content {
@@ -50,54 +50,6 @@
   font-family: 'Open Sans', sans-serif;
   line-height: 1.5;
   color: rgb(114, 114, 114);
-}
-
-.footer {
-  /* Red Theme */
-  background-color: rgb(190, 43, 38);
-
-  height: 250px;
-}
-
-.footer-attribution {
-  /* Red Theme */
-  background-color: rgb(182, 40, 35);
-
-  color: rgb(238, 196, 196);
-  font-family: 'Open Sans', sans-serif;
-  height: 20px;
-  text-align: center;
-  font-size: 1rem;
-  padding-top: 2px;
-}
-
-.footer-attribution a {
-  color: rgb(255, 255, 255);
-}
-
-.footer-attribution a:hover {
-  color: rgb(238, 196, 196);
-}
-
-.footer-content {
-  color: rgb(255, 255, 255);
-  text-align: center;
-  margin-top: 10px;
-  font-family: 'Comfortaa', cursive;
-}
-
-.footer-content p {
-  padding: 5px;
-  color: rgb(238, 196, 196);
-}
-
-.footer-content a {
-  color: white;
-  padding-right: 5px;
-}
-
-.footer-content a:hover {
-  color: rgb(238, 196, 196);
 }
 
 .how-to-container {
@@ -152,10 +104,6 @@
 }
 
 @media only screen and (max-width: 1366px) {
-  .footer {
-    height: 215px;
-  }
-
   .how-to-container {
     margin-top: 50px;
     width: 100%;
@@ -170,10 +118,6 @@
   .content {
     width: 95%;
     margin: 0 auto;
-  }
-
-  .footer {
-    height: 200px;
   }
 
   .how-to-container {
@@ -194,10 +138,6 @@
   .content {
     width: 90%;
     margin: 0 auto;
-  }
-
-  .footer {
-    height: 180px;
   }
 
   .titles {
