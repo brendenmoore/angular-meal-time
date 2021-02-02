@@ -45,6 +45,7 @@ h1 {
     border: 1px solid rgb(223, 223, 223);
     border-radius: 5px;
     box-shadow: none;
+    font-family: 'Open Sans', sans-serif;
   }
 
 .mat-column-Date {
@@ -76,6 +77,10 @@ div {
 }
 mat-cell {
     display: block;
+}
+
+.small-input {
+    font-family: 'Open Sans', sans-serif;
 }
 
 ::ng-deep .custom-dialog-container > .mat-dialog-container {
