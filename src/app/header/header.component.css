@@ -11,14 +11,26 @@
     box-shadow: 0px 0px 10px 0px #00053136;
 }
 
-.btn2 {
-    width: 86px;
+/* .btn2 {
+    width: 91px;
     margin-right: 10px;
-    border: 2px solid white;
+    color: rgba(255, 255, 255, 0.527);
+    border: 2px solid rgba(255, 255, 255, 0.527);
     border-radius: 20px;
     text-shadow: 0px 0px 10px #0407357e;
     -webkit-box-shadow: 0px 0px 10px 0px #0005311e;
     box-shadow: 0px 0px 10px 0px #0005311e;
+} */
+
+.btn2 {
+    color: white;
+    font-size: 28px;
+    margin-right: 18px;
+    cursor: pointer;
+}
+
+.btn2:hover {
+    color: rgb(255, 220, 220);
 }
 
 .logo {
