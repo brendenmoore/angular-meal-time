@@ -12,14 +12,14 @@
     width: 80%;
 }
 
-h2 { 
+h2 {
     text-align: center;
     width: 100%;
 }
 
 .item {
     border-bottom: 1px solid black;
-    border-right: 1px solid black;  
+    border-right: 1px solid black;
     width: 100%;
 }
 
@@ -35,13 +35,16 @@ h1 {
     width: 70%;
     min-width: 350px;
     display: inline-block;
-    margin-bottom: 5px;   
+    margin-bottom: 5px;
 }
 
 .mat-table {
     display: inline-block;
     width: 70%;
     min-width: 350px;
+    border: 1px solid rgb(223, 223, 223);
+    border-radius: 5px;
+    box-shadow: none;
   }
 
 .mat-column-Date {
