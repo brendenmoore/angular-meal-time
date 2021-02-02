@@ -1,4 +1,3 @@
-
 .btn1 {
     margin-left: 15px;
     margin-right: 10px;
@@ -10,17 +9,6 @@
     -webkit-box-shadow: 0px 0px 10px 0px #00053136;
     box-shadow: 0px 0px 10px 0px #00053136;
 }
-
-/* .btn2 {
-    width: 91px;
-    margin-right: 10px;
-    color: rgba(255, 255, 255, 0.527);
-    border: 2px solid rgba(255, 255, 255, 0.527);
-    border-radius: 20px;
-    text-shadow: 0px 0px 10px #0407357e;
-    -webkit-box-shadow: 0px 0px 10px 0px #0005311e;
-    box-shadow: 0px 0px 10px 0px #0005311e;
-} */
 
 .btn2 {
     color: white;
