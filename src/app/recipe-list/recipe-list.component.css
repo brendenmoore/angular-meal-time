@@ -9,6 +9,7 @@
 #wrapper {
   text-align: center;
   width: 100%;
+  padding: 0 15px;
 }
 
 li {
@@ -37,7 +38,7 @@ p {
   width: 98%;
   text-align: left;
   padding: 5px;
-  margin: 0 auto;
+  margin: 10px auto 0 auto;
 }
 
 .new-recpie-container {
