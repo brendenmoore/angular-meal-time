@@ -1,0 +1,22 @@
+.ingredients-container {
+    position: relative;
+}
+
+.btn-remove {
+    color: rgb(167, 167, 167);
+    position: absolute;
+    top: 40%;
+    left: 85%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.btn-remove:hover {
+    color: rgb(223, 60, 55);
+}
+
+.mat-stroked-button {
+    margin-bottom: 18px;
+}
