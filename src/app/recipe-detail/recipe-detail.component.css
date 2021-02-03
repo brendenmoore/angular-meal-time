@@ -1,5 +1,30 @@
+
+.ingredients-container {
+  position: relative;
+}
+
+.btn-remove {
+  color: rgb(167, 167, 167);
+  position: absolute;
+  top: 44%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.btn-remove:hover {
+  color: rgb(223, 60, 55);
+}
+
 .details {
   text-align: left;
+  font-family: 'Open Sans', sans-serif;
+  background-color:rgb(246, 246, 246);
+  border-radius: 10px;
+  padding: 10px;
+  margin: 0 auto;
 }
 
 .table {
@@ -25,10 +50,10 @@
 }
 
 button {
-  margin: 3px;  
+  margin: 3px;
 }
 
-/* 
+/*
 button {
   height: fit-content;
   padding: 3px;

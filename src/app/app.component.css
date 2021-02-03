@@ -1,12 +1,169 @@
-.mat-tab-group {
-  margin-bottom: 48px;
+.about-container {
+  margin: 0px 0;
 }
 
-.login-container {
-  width: fit-content;
-  margin: 20vh auto;
+.btn-primary {
+  /* Red Theme */
+  background: rgb(214, 56, 51);
+
+  color: white;
+  padding: 8px 25px;
+  margin: 30px;
+  border: none;
+  border-radius: 20px;
+}
+
+.btn-primary:hover {
+  /* Red Theme */
+  background: rgb(236, 78, 73);
+}
+
+.content {
+  font-family: 'Open Sans', sans-serif;
+  line-height: 1.5;
+  width: 80%;
+  margin: 0 auto;
+  color: rgb(114, 114, 114);
+}
+
+.features {
+  margin: 40px 0;
+  padding: 20px;
+}
+
+.features h4 {
+  /* Red Theme */
+  color: rgb(223, 60, 55);
+
+  font-size: 1.2em;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-shadow: 0px 0px 10px #0407351e;
+}
+
+.features-icons {
+  width: 100px;
+  margin-bottom: 20px;
+}
+
+.features p {
+  font-family: 'Open Sans', sans-serif;
+  line-height: 1.5;
+  color: rgb(114, 114, 114);
+}
+
+.how-to-container {
+  /* Red Theme */
+  background: rgb(255, 238, 238);
+
+  border-radius: 20px;
+  margin: 50px auto 0 auto;
+  width: 90%;
+}
+
+.how-to-content {
+  font-size: 1em;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .login-btn {
   padding: 20px 40px;
+}
+
+.mat-tab-group {
+  margin-bottom: 48px;
+}
+
+.photo {
+  margin-top: -50px;
+}
+
+.titles {
+  /* Red Theme */
+  color: rgb(223, 60, 55);
+
+  font-size: 2.5em;
+  font-weight: 600;
+  margin-bottom: 25px;
+  text-shadow: 0px 0px 10px #04073515;
+  font-family: 'Lobster Two', cursive;
+  text-decoration: underline;
+}
+
+.try-container {
+  margin: 50px 0 0 0;
+}
+
+.width-container {
+  color: rgb(82, 82, 82);
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 17px;
+  font-family: 'Comfortaa', cursive;
+}
+
+@media only screen and (max-width: 1366px) {
+  .how-to-container {
+    margin-top: 50px;
+    width: 100%;
+  }
+
+  .width-container {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .content {
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  .how-to-container {
+    margin-top: 50px;
+    width: 100%;
+  }
+
+  .width-container {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .about-container {
+    margin: 20px 0;
+  }
+
+  .content {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .titles {
+    font-size: 2em;
+  }
+
+  .features {
+    margin: 5px 0;
+  }
+
+  .how-to-container {
+    margin-top: 50px;
+    width: 100%;
+  }
+
+  .photo {
+      margin-top: 0;
+  }
+
+  .width-container {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 355px) {
+  .photo {
+    height: 180px;
+  }
 }

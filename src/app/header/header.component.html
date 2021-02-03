@@ -1,26 +1,36 @@
-<div id="wrapper">
-  <div class="logo-container">
-    <img class="logo" src="../../assets/MealTimeLogo.svg">
-    <h1 class="logo-text">Meal Time</h1>
-  </div>
-  <div>
-    
-  <button class="white-btn" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-    <mat-icon>more_vert</mat-icon>
-  </button>
+<!-- This navbar is displayed when user is signed out -->
+<div *ngIf="!(user.uidObs | async)">
 
-  <mat-menu #menu="matMenu">
-    <button *ngIf="user.uidObs | async as uid; else login" mat-menu-item (click)="user.logout()">
-      <mat-icon>logout</mat-icon>
-      <span>logout</span>
+  <nav id="navbarMain" class="navbar navbar-expand-md navbar-dark fixed-top">
+    <a class="navbar-brand logo-text" href="">
+      <img class="logo" src="../assets/LogoFullSmall.png">
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
+      aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <mat-icon class="menu-icon">menu</mat-icon>
     </button>
-    <ng-template #login>
-      <button #login mat-menu-item (click)="user.login()">
-        <mat-icon>login</mat-icon>
-        <span>login</span>
-      </button>
-    </ng-template>
-  </mat-menu>
 
-  </div>
+    <div class="collapse navbar-collapse" id="navbarToggler">
+      <div class="navbar-nav ml-auto">
+        <a class="nav-link" (click)="scrollToElement('#about')">About</a>
+        <a class="nav-link" (click)="scrollToElement('#how')">How It Works</a>
+        <a class="nav-link" (click)="scrollToElement('#try')">Try It</a>
+        <button class="btn btn-outline-light btn1" (click)="user.login()">Sign In</button>
+      </div>
+    </div>
+  </nav>
+
+</div>
+
+<!-- This navbar is displayed when user is signed in -->
+<div *ngIf="user.uidObs | async">
+
+  <nav class="navbar navbar-expand-md navbar-dark navbar2">
+    <img class="logo" src="../../assets/MealTimeLogoTransparent.png">
+    <a class="navbar-brand logo-text" href="">MealTime</a>
+    <mat-icon class="btn2 ml-auto" (click)="user.logout()">logout</mat-icon>
+    <!-- <button class="btn btn-outline-light ml-auto btn2" (click)="user.logout()">Sign Out</button> -->
+  </nav>
+
 </div>

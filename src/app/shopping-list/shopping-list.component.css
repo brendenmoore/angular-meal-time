@@ -1,13 +1,40 @@
+.btn-container {
+  width: 97%;
+  margin: 0 auto;
+}
+
 .container {
-  width: 90%;
-  max-width: 500px;
+  width: 100%;
   margin: 20px auto;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.dates {
+  width: 97%;
+  padding: 5px;
+  margin: 0 auto 8px auto;
+  background: rgb(255, 238, 238);
+  border-radius: 5px;
+  text-align: center;
+}
+
+.generate-btn {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+}
+
+.mat-card {
+  border: 1px solid rgb(223, 223, 223);
+  border-radius: 5px;
+  box-shadow: none;
+  max-width: 97%;
+  margin: 0 auto 5px auto;
+}
+
+.mat-checkbox {
+  font-family: 'Open Sans', sans-serif;
 }
 
 .shopping-list-container {
-  margin-top: 20px;
-}
-
-.ingredient-container {
-  margin-top: 10px;
+  margin-top: 8px;
 }

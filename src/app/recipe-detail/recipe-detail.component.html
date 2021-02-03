@@ -1,37 +1,87 @@
 <div *ngIf="recipeObs | async as recipe" class="details">
-  
+
   <div *ngIf="!isEdit; else edit" class="table">
-    <div class="recipe-prop"><p *ngIf="recipe.name">Name: </p><p class="property" *ngIf="recipe.name">{{recipe.name}}</p></div>
-    <div class="recipe-prop"><p *ngIf="recipe.prepTime">Prep Time: </p><p class="property" *ngIf="recipe.prepTime">{{recipe.prepTime}}</p></div>
-    <div class="recipe-prop"><p *ngIf="recipe.cookTime">Cook Time: </p><p class="property" *ngIf="recipe.cookTime">{{recipe.cookTime}}</p></div>
-    <div class="recipe-prop"><p *ngIf="recipe.servings">Servings: </p><p class="property" *ngIf="recipe.servings">{{recipe.servings}}</p></div>
-    <div class="recipe-prop"><p *ngIf="recipe.directions">Directions: </p><p class="property" *ngIf="recipe.directions">{{recipe.directions}}</p></div>
-    <div class="recipe-prop"><p *ngIf="recipe.notes">Notes: </p><p class="property" *ngIf="recipe.notes">{{recipe.notes}}</p></div>
+    <div class="recipe-prop">
+      <p *ngIf="recipe.name">Name: </p>
+      <p class="property" *ngIf="recipe.name">{{recipe.name}}</p>
+    </div>
+    <div class="recipe-prop">
+      <p *ngIf="recipe.prepTime">Prep Time: </p>
+      <p class="property" *ngIf="recipe.prepTime">{{recipe.prepTime}}</p>
+    </div>
+    <div class="recipe-prop">
+      <p *ngIf="recipe.cookTime">Cook Time: </p>
+      <p class="property" *ngIf="recipe.cookTime">{{recipe.cookTime}}</p>
+    </div>
+    <div class="recipe-prop">
+      <p *ngIf="recipe.servings">Servings: </p>
+      <p class="property" *ngIf="recipe.servings">{{recipe.servings}}</p>
+    </div>
+    <div class="recipe-prop">
+      <p *ngIf="recipe.directions">Directions: </p>
+      <p class="property" *ngIf="recipe.directions">{{recipe.directions}}</p>
+    </div>
+    <div class="recipe-prop">
+      <p *ngIf="recipe.notes">Notes: </p>
+      <p class="property" *ngIf="recipe.notes">{{recipe.notes}}</p>
+    </div>
     <p *ngIf="recipe.ingredients">Ingredients: </p>
     <ol *ngIf="recipe.ingredients">
       <li *ngFor="let ingredient of recipe.ingredients; let i=index">&emsp;{{i+1}}. {{ingredient}}</li>
     </ol>
     <div id="editBtns">
-      <input [(ngModel)]='dateSelectedForMenu' matInput (dateInput)="addToMenu($event.value.getTime())" [matDatepicker]="picker" style="width:0;margin:0;padding:0;border:0;">
+      <input [(ngModel)]='dateSelectedForMenu' matInput (dateInput)="addToMenu($event.value.getTime())"
+        [matDatepicker]="picker" style="width:0;margin:0;padding:0;border:0;">
       <mat-datepicker #picker></mat-datepicker>
       <button (click)="isEdit = true" type="button" mat-stroked-button>Edit</button>
-      <button  (click)="onDateSelected()" mat-stroked-button>Add To Menu</button>
+      <button (click)="onDateSelected()" mat-stroked-button>Add To Menu</button>
     </div>
   </div>
 
   <ng-template #edit>
     <form #editRecipeForm="ngForm" class="table" (ngSubmit)="processForm(editRecipeForm)" novalidate>
-      <div class="recipe-prop"><p>name: </p><input name="name" ngModel type="text" [(ngModel)]="recipe.name"></div>
-      <div class="recipe-prop"><p>prep time: </p><input name="prepTime" ngModel type="text" [(ngModel)]="recipe.prepTime"></div>
-      <div class="recipe-prop"><p>cook time: </p><input name="cookTime" ngModel type="text" [(ngModel)]="recipe.cookTime"></div>
-      <div class="recipe-prop"><p>servings: </p><input name="servings" ngModel type="text" [(ngModel)]="recipe.servings"></div>
-      <div class="recipe-prop"><p>directions: </p><input name="directions" ngModel type="text" [(ngModel)]="recipe.directions"></div>
-      <div class="recipe-prop"><p>notes: </p><input name="notes" ngModel type="text" [(ngModel)]="recipe.notes"></div>
-      <div><p>ingredients: </p></div>
+
+      <mat-form-field class="recipe-prop" appearance="outline">
+        <mat-label>Name</mat-label>
+        <input name="name" ngModel type="text" [(ngModel)]="recipe.name" matInput>
+      </mat-form-field>
+
+      <mat-form-field class="recipe-prop" appearance="outline">
+        <mat-label>Prep Time</mat-label>
+        <input name="prepTime" ngModel type="text" [(ngModel)]="recipe.prepTime" matInput>
+      </mat-form-field>
+
+      <mat-form-field class="recipe-prop" appearance="outline">
+        <mat-label>Cook Time</mat-label>
+        <input name="cookTime" ngModel type="text" [(ngModel)]="recipe.cookTime" matInput>
+      </mat-form-field>
+
+      <mat-form-field class="recipe-prop" appearance="outline">
+        <mat-label>Servings</mat-label>
+        <input name="servings" ngModel type="text" [(ngModel)]="recipe.servings" matInput>
+      </mat-form-field>
+
+      <mat-form-field class="recipe-prop" appearance="outline">
+        <mat-label>Directions</mat-label>
+        <input name="directions" ngModel type="text" [(ngModel)]="recipe.directions" matInput>
+      </mat-form-field>
+
+      <mat-form-field class="recipe-prop" appearance="outline">
+        <mat-label>Notes</mat-label>
+        <input name="notes" ngModel type="text" [(ngModel)]="recipe.notes" matInput>
+      </mat-form-field>
+
       <ol *ngIf="ingredientList">
         <li *ngFor="let ingredient of ingredientList; let i=index; trackBy:trackByFn">
-          <input type="text" name="{{ingredientList.indexOf(ingredient)}}" [(ngModel)]="ingredientList[i]">
-          <button (click)="removeIngredient(ingredientList.indexOf(ingredient))" type="button" mat-stroked-button>X</button>
+          <!-- <input type="text" name="{{ingredientList.indexOf(ingredient)}}" [(ngModel)]="ingredientList[i]"> -->
+          <div class="ingredients-container">
+            <mat-form-field class="recipe-prop" appearance="outline">
+              <mat-label>Ingredient #{{i+1}}</mat-label>
+              <input type="text" name="{{ingredientList.indexOf(ingredient)}}" [(ngModel)]="ingredientList[i]" matInput>
+            </mat-form-field>
+
+            <mat-icon class="btn-remove" (click)="removeIngredient(ingredientList.indexOf(ingredient))">clear</mat-icon>
+          </div>
         </li>
         <button (click)="addIngredientInput()" type="button" mat-stroked-button>Add Ingredient</button>
       </ol>
@@ -42,8 +92,3 @@
     </form>
   </ng-template>
 </div>
-
-
-
-
-

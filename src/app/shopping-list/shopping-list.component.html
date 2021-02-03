@@ -1,15 +1,21 @@
 <div class="container">
-    <button class="generate-btn" (click)="openGenerateShoppingList()" mat-stroked-button>Generate Shopping List</button>
+
+    <div class="btn-container">
+        <button class="generate-btn" (click)="openGenerateShoppingList()" mat-stroked-button>
+            Generate Shopping List
+        </button>
+    </div>
     <div class="shopping-list-container" *ngIf="shoppingListToDisplay">
-        <p>{{shoppingListToDisplay.startDate}} - {{shoppingListToDisplay.endDate}}</p>
-        <p>Created On: {{shoppingListToDisplay.createdOn}}</p>
+        <div class="dates">
+            <p>{{shoppingListToDisplay.startDate}} - {{shoppingListToDisplay.endDate}}</p>
+            <p>Created On: {{shoppingListToDisplay.createdOn}}</p>
+        </div>
         <mat-card class="ingredient-container" *ngFor="let ingredient of shoppingListToDisplay.ingredients">
-            <mat-checkbox [checked]="ingredient.isChecked" 
+            <mat-checkbox [checked]="ingredient.isChecked"
                 (change)="showOptions($event, shoppingListToDisplay.ingredients.indexOf(ingredient))">
                 {{ingredient.name}}
             </mat-checkbox>
         </mat-card>
     </div>
-    
 
 </div>

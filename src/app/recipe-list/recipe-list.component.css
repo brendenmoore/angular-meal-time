@@ -1,6 +1,23 @@
+.mat-expansion-panel {
+  border: 1px solid rgb(223, 223, 223);
+  border-radius: 5px;
+  box-shadow: none;
+  max-width: 97%;
+  margin: 0 auto 5px auto;
+}
+
+.mat-form-field {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.mat-pannel-title {
+  font-family: 'Open Sans', sans-serif;
+}
+
 #wrapper {
   text-align: center;
-  width: 100%;
+  width: 97%;
+  margin: 0 auto 15px auto;
 }
 
 li {
@@ -8,7 +25,7 @@ li {
   justify-content: space-between;
   text-align: left;
   padding: 10px;
-  border-bottom: 1px solid #3f51b5;
+  /* border-bottom: 1px solid rgb(223, 60, 55); */
   color: black;
   margin-bottom: 5px;
   list-style-type: none;
@@ -26,10 +43,10 @@ p {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  width: 98%;
   text-align: left;
   padding: 5px;
-  border-bottom: 1px solid #3f51b5;
+  margin: 10px auto 0 auto;
 }
 
 .new-recpie-container {

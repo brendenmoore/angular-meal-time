@@ -1,18 +1,103 @@
 <app-header></app-header>
-<div *ngIf="user.uidObs | async">
-    <mat-tab-group dynamicHeight mat-align-tabs="center">
-        <mat-tab label="Recipes"><app-recipe-list></app-recipe-list></mat-tab>
-        <mat-tab label="Menu"><app-menu></app-menu></mat-tab>
-        <mat-tab label="Shopping"><app-shopping-list></app-shopping-list></mat-tab>
-    </mat-tab-group>
-</div>
 
+<!-- Displayed when user is signed out -->
 <div class="login-container" *ngIf="!(user.uidObs | async)">
-    <button class="login-btn" mat-stroked-button (click)="user.login()">
-        <mat-icon>login</mat-icon>
-        <span>login</span>
-    </button>
+    <div id="photos-carousel" class="carousel slide carousel-fade" data-ride="carousel">
+        <div class="carousel-inner-container">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="../assets/photo1.png" class="photo d-block w-100" alt="Salad" ondragstart="return false;">
+                </div>
+                <div class="carousel-item">
+                    <img src="../assets/photo2.png" class="photo d-block w-100" alt="Sushi" ondragstart="return false;">
+                </div>
+                <div class="carousel-item">
+                    <img src="../assets/photo3.png" class="photo d-block w-100" alt="Fish" ondragstart="return false;">
+                </div>
+                <div class="carousel-item">
+                    <img src="../assets/photo4.png" class="photo d-block w-100" alt="Dessert" ondragstart="return false;">
+                </div>
+                <div class="carousel-item">
+                    <img src="../assets/photo5.png" class="photo d-block w-100" alt="Burger" ondragstart="return false;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="about" class="width-container">
+        <div class="about-container">
+            <p class="titles">Your Meals, Your Way!</p>
+            <div class="content">Shopping and meal planning can be a weekly (or daily!) struggle,
+                but it doesn't have to be. That's why we made MealTime, a central location for all
+                your recipes and tasty meal plans. The best part is, when you're ready to head to
+                the store, you can turn your plan into a shopping list in a single click - no more
+                forgetting crucial ingredients!
+            </div>
+        </div>
+
+        <div id="how" class="how-to-container">
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-md-4 features">
+                        <img src="../assets/recipes.png" class="features-icons" alt="Recipes">
+                        <h4>Enter Your Recipes</h4>
+                        <p>Whether it's a delicious personal recipe or something you saw online,
+                            add your recipes to our virtual recipe book. Keep track of ingredients,
+                            instructions and all other aspects of your favorite foods!
+                        </p>
+                    </div>
+                    <div class="col-md-4 features">
+                        <img src="../assets/planMeals.png" class="features-icons" alt="Meals">
+                        <h4>Plan Your Meals</h4>
+                        <p>Make your week easier by adding your favorite recipes to your personal menu and plan as many
+                            days ahead as you want. Easily see your meals on the go to keep
+                            track of what's coming up!
+                        </p>
+                    </div>
+                    <div class="col-md-4 features">
+                        <img src="../assets/shoppingList.png" class="features-icons" alt="Recipes">
+                        <h4>Create Shopping List</h4>
+                        <p>With the data from your recipes and meal plan,
+                            we can generate an interactive shopping list to simplify your shopping
+                            experience and ensure you have all the ingredients you need!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="try" class="try-container">
+            <p class="titles">What Are You Waiting For?</p>
+            <div class="content">Whether you're a meal-prep fanatic, a family needing some organization,
+                or just someone who doesn't want to have to keep running out to the grocery store, we can help!
+                Take a load off and give it a try!
+            </div>
+            <button class="btn btn-primary" (click)="user.login()">Get Started</button>
+        </div>
+    </div>
+
+    <app-footer></app-footer>
+
 </div>
 
+<!-- Displayed when user is signed in -->
+<div *ngIf="user.uidObs | async">
 
+    <mat-tab-group dynamicHeight mat-align-tabs="center">
+        <mat-tab label="Recipes">
+            <app-recipe-list></app-recipe-list>
+        </mat-tab>
+        <mat-tab label="Menu">
+            <app-menu></app-menu>
+        </mat-tab>
+        <mat-tab label="Shopping">
+            <app-shopping-list></app-shopping-list>
+        </mat-tab>
+    </mat-tab-group>
 
+    <div class="d-flex flex-column min-vh-100">
+        <div class="flex-grow-1"></div>
+        <app-footer></app-footer>
+    </div>
+
+</div>

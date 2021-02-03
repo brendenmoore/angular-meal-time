@@ -33,11 +33,12 @@ import {MatInputModule} from '@angular/material/input';
 import { GenerateShoppingListComponent } from './generate-shopping-list/generate-shopping-list.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { FooterComponent } from './footer/footer.component';
 
 
 
 @NgModule({
-  declarations: [AppComponent, RecipeListComponent, RecipeDetailComponent, MenuComponent, ShoppingListComponent, ClickStopPropagationDirective, DayMenuComponent, HeaderComponent, NewRecipeComponent, GenerateShoppingListComponent],
+  declarations: [AppComponent, RecipeListComponent, RecipeDetailComponent, MenuComponent, ShoppingListComponent, ClickStopPropagationDirective, DayMenuComponent, HeaderComponent, NewRecipeComponent, GenerateShoppingListComponent, FooterComponent],
   imports: [
     BrowserModule,
     AppRoutingModule, 

@@ -1,21 +1,63 @@
 <div *ngIf="newRecipe">
   <form #editRecipeForm="ngForm" class="table" (ngSubmit)="processForm(editRecipeForm)" novalidate>
-    <p>name: </p><input name="name" ngModel type="text" [(ngModel)]="newRecipe.name">
-    <p>prep time: </p><input name="prepTime" ngModel type="text" [(ngModel)]="newRecipe.prepTime">
-    <p>cook time: </p><input name="cookTime" ngModel type="text" [(ngModel)]="newRecipe.cookTime">
-    <p>servings: </p><input name="servings" ngModel type="text" [(ngModel)]="newRecipe.servings">
-    <p>directions: </p><input name="directions" ngModel type="text" [(ngModel)]="newRecipe.directions">
-    <p>notes: </p><input name="notes" ngModel type="text" [(ngModel)]="newRecipe.notes">
-    <div><p>ingredients: </p></div>
+
+    <div class="recipe-details">
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input name="name" ngModel type="text" [(ngModel)]="newRecipe.name" matInput>
+      </mat-form-field>
+    </div>
+
+    <div class="recipe-details">
+      <mat-form-field appearance="outline">
+        <mat-label>Prep Time</mat-label>
+        <input name="prepTime" ngModel type="text" [(ngModel)]="newRecipe.prepTime" matInput>
+      </mat-form-field>
+    </div>
+
+    <div class="recipe-details">
+      <mat-form-field appearance="outline">
+        <mat-label>Cook Time</mat-label>
+        <input name="cookTime" ngModel type="text" [(ngModel)]="newRecipe.cookTime" matInput>
+      </mat-form-field>
+    </div>
+
+    <div class="recipe-details">
+      <mat-form-field appearance="outline">
+        <mat-label>Servings</mat-label>
+        <input name="servings" ngModel type="text" [(ngModel)]="newRecipe.servings" matInput>
+      </mat-form-field>
+    </div>
+
+    <div class="recipe-details">
+      <mat-form-field appearance="outline">
+        <mat-label>Directions</mat-label>
+        <input name="directions" ngModel type="text" [(ngModel)]="newRecipe.directions" matInput>
+      </mat-form-field>
+    </div>
+
+    <div class="recipe-details">
+      <mat-form-field appearance="outline">
+        <mat-label>Notes</mat-label>
+        <input name="notes" ngModel type="text" [(ngModel)]="newRecipe.notes" matInput>
+      </mat-form-field>
+    </div>
+
     <ol>
       <li *ngFor="let ingredient of newRecipe.ingredients; let i=index; trackBy:trackByFn">
-        <input type="text" name="{{i}}" [(ngModel)]="newRecipe.ingredients[i]">
-        <button (click)="removeIngredient(i)" type="button">X</button>
+        <div class="ingredients-container">
+          <mat-form-field class="recipe-prop" appearance="outline">
+            <mat-label>Ingredient #{{i+1}}</mat-label>
+            <input type="text" name="{{i}}" [(ngModel)]="newRecipe.ingredients[i]" matInput>
+          </mat-form-field>
+
+          <mat-icon class="btn-remove" (click)="removeIngredient(i)">clear</mat-icon>
+        </div>
       </li>
-      <button (click)="newRecipe.ingredients.push('')" type="button">Add Ingredient</button>
+      <button (click)="newRecipe.ingredients.push('')" type="button" mat-stroked-button>Add Ingredient</button>
     </ol>
     <div id="editBtns">
-      <button type="submit" mat-dialog-close>Save</button>
+      <button type="submit" mat-dialog-close mat-stroked-button>Save</button>
     </div>
   </form>
 </div>
